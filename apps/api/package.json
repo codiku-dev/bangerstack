@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "NODE_ENV=development dotenvx run --  nest start --watch",
     "build": "dotenvx run -- nest build",
-    "start": "dotenvx run -- NODE_ENV=production nest start",
+    "start": "NODE_ENV=production dotenvx run --  nest start",
     "start:debug": "dotenvx run -- nest start --debug --watch",
     "start:prod": "NODE_ENV=production dotenvx run -- bunx prisma migrate deploy && node dist/src/main",
     "test": "dotenvx run -- jest",
