@@ -7,7 +7,7 @@
     "build": "dotenvx run -- nest build",
     "start": "dotenvx run -- NODE_ENV=production nest start",
     "start:debug": "dotenvx run -- nest start --debug --watch",
-    "start:prod": "dotenvx run -- NODE_ENV=production bunx prisma migrate deploy && node dist/src/main",
+    "start:prod": "NODE_ENV=production dotenvx run -- bunx prisma migrate deploy && node dist/src/main",
     "test": "dotenvx run -- jest",
     "test:watch": "dotenvx run -- jest --watch",
     "test:debug": "dotenvx run -- node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
