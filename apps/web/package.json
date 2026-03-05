@@ -4,11 +4,12 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "next dev --webpack --port 3000",
-    "build": "next build --webpack",
-    "start": "next start",
-    "start:prod": "next start",
-    "lint": "next lint --max-warnings 0",
+    "dotenvx": "dotenvx",
+    "dev": "dotenvx run -- next dev --webpack --port 3000",
+    "build": "dotenvx run -- next build --webpack",
+    "start": "dotenvx run -- next start",
+    "start:prod": "dotenvx run -- next start",
+    "lint": "dotenvx run -- next lint --max-warnings 0",
     "check-types": "tsc --noEmit"
   },
   "dependencies": {

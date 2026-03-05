@@ -6,7 +6,9 @@ node_modules
 .pnp.js
 
 # Local env files
-.env*
+.env.prod
+.env.staging
+
 !*.example
 
 
@@ -61,3 +63,6 @@ pnpm-debug.log*
 
 *storybook.log
 storybook-static
+
+*.keys
+*.local
