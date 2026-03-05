@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "#--------------------------GENERAL------------------------------#": "",
-    "build": "turbo run build",
+    "build": "bun run encrypt-env && turbo run build",
     "#--------------------------DEV------------------------------#": "",
     "dev": "bun db:update && concurrently -n turbo,ui,check --kill-others-on-fail \"turbo run dev\" \"npm run watch:ui\" \"npm run check-env:watch\"",
     "watch:ui": "concurrently -n styles,components \"turbo run dev:styles --filter=@repo/ui\" \"turbo run dev:components --filter=@repo/ui\" ",
@@ -36,7 +36,8 @@
     "#---------------------------ENV---------------------------------#": "",
     "generate-env-types": "bun run scripts/generate-env-types.ts",
     "check-env": "bun run scripts/check-env-all-apps.ts",
-    "check-env:watch": "bun run scripts/check-env-all-apps.ts -- --watch"
+    "check-env:watch": "bun run scripts/check-env-all-apps.ts -- --watch",
+    "encrypt-env": "npx dotenvx encrypt -f ./apps/*/.env.prod"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
