@@ -24,6 +24,10 @@ export const usersSchema = z.object({
         accessTokenExpiresAt: z.date(),
         refreshTokenExpiresAt: z.date(),
     })).optional(),
+    role: z.enum(['admin', 'user']),
+    banned: z.boolean().nullable().optional(),
+    banReason: z.string().nullable().optional(),
+    banExpires: z.coerce.date().nullable().optional(),
 });
 
 export const createUserSchema = usersSchema.omit({

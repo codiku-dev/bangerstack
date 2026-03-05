@@ -1,9 +1,0 @@
-[X] deploy
-- roles
-- delete fr.json and empty en.json if commande without examples
-X Disable doc en prod
-- Remove app.router when no examples set
-- Exemple sigin google
-- test back
-- test front
-- demo expo en +

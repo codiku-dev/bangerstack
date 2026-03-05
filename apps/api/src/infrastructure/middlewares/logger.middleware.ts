@@ -16,6 +16,30 @@ export class LoggedMiddleware implements TRPCMiddleware {
         return str.split('\n').map((line) => '  ' + line).join('\n');
     }
 
+    /**
+     * Build a serializable object from an error so the full message, cause and stack are logged.
+     */
+    private serializeError(err: unknown): Record<string, unknown> {
+        if (err instanceof Error) {
+            const out: Record<string, unknown> = {
+                name: err.name,
+                message: err.message,
+                ...(err.stack && { stack: err.stack }),
+            };
+            if (err['cause'] !== undefined) {
+                const cause = err['cause'];
+                out['cause'] = cause instanceof Error
+                    ? this.serializeError(cause)
+                    : cause;
+            }
+            const rest = { ...err } as Record<string, unknown>;
+            if (rest['code'] !== undefined) out['code'] = rest['code'];
+            if (rest['data'] !== undefined) out['data'] = rest['data'];
+            return out;
+        }
+        return { raw: err };
+    }
+
     private buildHeader(requestUrl: string, path: string, type: string, durationMs: number, input: unknown): string {
         const lines: string[] = [
             '',
@@ -47,10 +71,13 @@ export class LoggedMiddleware implements TRPCMiddleware {
 
             if (result?.ok === false) {
                 const errPayload = result?.error ?? result;
+                const serialized = errPayload instanceof Error
+                    ? this.serializeError(errPayload)
+                    : errPayload;
                 const log =
                     header +
                     '\n\n  RESPONSE (error)\n' +
-                    this.jsonBlock(errPayload) +
+                    this.jsonBlock(serialized) +
                     '\n' + BORDER + '\n';
                 this.consoleLogger.error(log);
             } else {
@@ -66,10 +93,11 @@ export class LoggedMiddleware implements TRPCMiddleware {
             return result;
         } catch (err) {
             const durationMs = Date.now() - start;
+            const serialized = err instanceof Error ? this.serializeError(err) : { raw: err };
             const log =
                 this.buildHeader(requestUrl, path, type, durationMs, input) +
                 '\n\n  RESPONSE (thrown)\n' +
-                this.jsonBlock(err instanceof Error ? { message: err.message, name: err.name } : err) +
+                this.jsonBlock(serialized) +
                 '\n' + BORDER + '\n';
             this.consoleLogger.error('\n' + log);
             throw err;

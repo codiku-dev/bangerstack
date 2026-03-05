@@ -485,6 +485,25 @@ export class AppRouter {
 
 At startup, `PublicPathScannerService` scans all routers and registers procedure paths that use `@Public()`. `AuthGuardMiddleware` then allows those paths without requiring auth; all other procedures require a session (Better Auth reads the session from request cookies).
 
+**Procedure-level: `@Roles(allowedRoles)`**
+
+To restrict a procedure to specific roles (e.g. admin-only), use `@Roles()` on the method. The user must be authenticated (so do **not** use `@Public()` on the same procedure) and `ctx.user.role` must be one of the given roles. Otherwise the API returns `FORBIDDEN` (403).
+
+- **Without `@Roles()`** – Any authenticated user can call the procedure.
+- **With `@Roles(['admin'])`** – Only users whose `role` is `'admin'` can call it. Works with Better Auth’s admin plugin (or any `user.role` you set).
+
+At startup, `RolesPathScannerService` scans routers and registers path → roles; `RolesProcedureMiddleware` then enforces them after auth.
+
+```typescript
+import { Roles } from '@api/src/infrastructure/decorators/auth/roles-procedure.decorator';
+
+@Roles(['admin'])
+@Query({ output: z.object({ message: z.string() }) })
+async roleProtectedHello(@Ctx() ctx: BaseUserSession) {
+  return { message: 'Admin only' };
+}
+```
+
 **Context in procedures**
 
 - **Protected procedures** (no `@Public()`): `ctx.user` and `ctx.session` are always set (middleware returns 401 otherwise).

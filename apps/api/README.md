@@ -15,13 +15,14 @@ You can start editing the demo **APIs** by modifying [linksService](./src/links/
 
 ### Protected routes & session
 
-Routes are protected by default via `@AuthGuard` on the router. Use `@Public()` for public procedures. In protected procedures, inject the tRPC context with `@Ctx() ctx: BaseUserSession` to access the authenticated user and session:
+Routes are protected by default via `@AuthGuard` on the router. Use `@Public()` for public procedures and `@Roles(['admin'])` for role-restricted procedures. In protected procedures, inject the tRPC context with `@Ctx() ctx: BaseUserSession` to access the authenticated user and session:
 
 ```ts
 import { Ctx, Query, Router } from 'nestjs-trpc';
 import { z } from 'zod';
 import { AuthGuard } from '@api/src/infrastructure/decorators/auth/auth-guard.decorator';
 import { Public } from '@api/src/infrastructure/decorators/auth/public-procedure.decorator';
+import { Roles } from '@api/src/infrastructure/decorators/auth/roles-procedure.decorator';
 import { BaseUserSession } from '@thallesp/nestjs-better-auth';
 
 @Router({ alias: 'app' })
@@ -37,6 +38,12 @@ export class AppRouter {
   async protectedHello(@Ctx() ctx: BaseUserSession) {
     const { user, session } = ctx; // user + session from better-auth
     return { message: `Hello ${user?.email} (session: ${session?.id})` };
+  }
+
+  @Roles(['admin'])
+  @Query({ output: z.object({ message: z.string() }) })
+  async roleProtectedHello(@Ctx() ctx: BaseUserSession) {
+    return { message: 'Admin only' };
   }
 }
 ```

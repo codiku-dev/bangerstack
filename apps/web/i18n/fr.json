@@ -85,11 +85,14 @@
       "backendSide": "Back-end",
       "publicFetch": "Public (hello)",
       "protectedFetch": "Protégé (protectedHello)",
+      "roleProtectedFetch": "Par rôle (roleProtectedHello)",
       "fetchPublic": "Appel public",
       "fetchProtected": "Appel privé",
+      "fetchRole": "Appel admin uniquement",
       "loading": "Chargement...",
       "clickToFetch": "Cliquez pour lancer l'appel",
       "unauthorized": "Non autorisé",
+      "forbidden": "Interdit (rôle admin requis)",
       "receiveSession": "Vous pouvez recevoir la session"
     },
     "step8": {

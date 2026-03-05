@@ -20,11 +20,19 @@ function isAuthError(error: unknown): boolean {
   );
 }
 
+function isForbiddenError(error: unknown): boolean {
+  const msg = getErrorMessage(error).toLowerCase();
+  return msg.includes('forbidden') || msg.includes('403');
+}
+
 export function ApiProtetionStep() {
   const t = useTranslations('Landing.step6');
 
   const publicQuery = trpc.app.hello.useQuery(undefined, { enabled: false });
   const protectedQuery = trpc.app.protectedHello.useQuery(undefined, {
+    enabled: false,
+  });
+  const roleProtectedQuery = trpc.app.roleProtectedHello.useQuery(undefined, {
     enabled: false,
   });
 
@@ -39,6 +47,14 @@ export function ApiProtetionStep() {
       ? isAuthError(protectedQuery.error)
         ? t('unauthorized')
         : getErrorMessage(protectedQuery.error)
+      : null;
+  const roleProtectedErrorText =
+    roleProtectedQuery.error != null
+      ? isForbiddenError(roleProtectedQuery.error)
+        ? t('forbidden')
+        : isAuthError(roleProtectedQuery.error)
+          ? t('unauthorized')
+          : getErrorMessage(roleProtectedQuery.error)
       : null;
 
   return (
@@ -124,6 +140,25 @@ export function ApiProtetionStep() {
                 <span className="text-gray-300"> {'{ message: `... ${user?.email}` }'};</span>
                 {'\n'}
                 <span className="text-gray-300"> {'}'}</span>
+                {'\n\n'}
+                <span className="text-gray-300"> </span>
+                <span className="text-purple-400">@Roles</span>
+                <span className="text-gray-300">([</span>
+                <span className="text-blue-400">'admin'</span>
+                <span className="text-gray-300">])</span>
+                <span className="ml-2 sm:ml-4 text-green-400 border border-green-400 px-0.5 py-px rounded text-[9px] sm:text-[10px]">
+                  {' '}
+                  {'// Role-restricted: only admin'}
+                </span>
+                {'\n'}
+                <span className="text-gray-300"> </span>
+                <span className="text-purple-400">@Query</span>
+                <span className="text-gray-300">(...)</span>
+                {'\n'}
+                <span className="text-gray-300"> </span>
+                <span className="text-purple-400">async</span>{' '}
+                <span className="text-yellow-400">roleProtectedHello</span>
+                <span className="text-gray-300">(...) {'{'} ... {'}'}</span>
                 {'\n'}
                 <span className="text-gray-300">{'}'}</span>
               </code>
@@ -197,6 +232,41 @@ export function ApiProtetionStep() {
                 {!protectedQuery.data &&
                   !protectedQuery.error &&
                   !protectedQuery.isFetching && (
+                    <p className="text-gray-700 text-sm">{t('clickToFetch')}</p>
+                  )}
+              </div>
+            </div>
+          </div>
+
+          <div className="min-w-0 bg-gray-900 rounded-lg overflow-hidden border border-gray-800">
+            <div className="bg-gray-800 px-3 sm:px-4 py-2 border-b border-gray-700 min-w-0">
+              <span className="text-xs font-medium text-gray-300 truncate block">
+                {t('roleProtectedFetch')}
+              </span>
+            </div>
+            <div className="p-3 sm:p-6 bg-white min-w-0">
+              <button
+                type="button"
+                onClick={() => roleProtectedQuery.refetch()}
+                disabled={roleProtectedQuery.isFetching}
+                className="w-full sm:w-auto mb-3 sm:mb-4 px-3 sm:px-4 py-2.5 sm:py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 transition-colors text-sm font-medium"
+              >
+                {roleProtectedQuery.isFetching ? t('loading') : t('fetchRole')}
+              </button>
+              <div className="min-h-[60px] sm:min-h-[80px] min-w-0 overflow-hidden">
+                {roleProtectedQuery.data != null && (
+                  <pre className="text-[11px] sm:text-xs font-mono bg-emerald-50 text-emerald-900 p-3 sm:p-4 rounded border border-emerald-200 overflow-x-auto overflow-y-auto max-h-[120px] sm:max-h-none min-w-0 break-all">
+                    {JSON.stringify(roleProtectedQuery.data, null, 2)}
+                  </pre>
+                )}
+                {roleProtectedErrorText != null && (
+                  <pre className="text-[11px] sm:text-xs font-mono bg-red-50 text-red-900 p-3 sm:p-4 rounded border border-red-200 overflow-x-auto overflow-y-auto max-h-[120px] sm:max-h-none min-w-0 break-all">
+                    {roleProtectedErrorText}
+                  </pre>
+                )}
+                {!roleProtectedQuery.data &&
+                  !roleProtectedQuery.error &&
+                  !roleProtectedQuery.isFetching && (
                     <p className="text-gray-700 text-sm">{t('clickToFetch')}</p>
                   )}
               </div>

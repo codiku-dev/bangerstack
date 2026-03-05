@@ -7,7 +7,8 @@ const publicProcedure = t.procedure;
 const appRouter = t.router({
   app: t.router({
     hello: publicProcedure.output(z.object({ message: z.string() })).query(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any),
-    protectedHello: publicProcedure.output(z.object({ message: z.string() })).query(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any)
+    protectedHello: publicProcedure.output(z.object({ message: z.string() })).query(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any),
+    roleProtectedHello: publicProcedure.output(z.object({ message: z.string() })).query(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any)
   }),
   users: t.router({
     read: publicProcedure.input(z.object({ id: z.string() })).output(z.object({
@@ -34,6 +35,10 @@ const appRouter = t.router({
         accessTokenExpiresAt: z.date(),
         refreshTokenExpiresAt: z.date(),
       })).optional(),
+      role: z.enum(['admin', 'user']),
+      banned: z.boolean().nullable().optional(),
+      banReason: z.string().nullable().optional(),
+      banExpires: z.coerce.date().nullable().optional(),
     })).query(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any),
     readAll: publicProcedure.output(z.array(z.object({
       id: z.string(),
@@ -59,6 +64,10 @@ const appRouter = t.router({
         accessTokenExpiresAt: z.date(),
         refreshTokenExpiresAt: z.date(),
       })).optional(),
+      role: z.enum(['admin', 'user']),
+      banned: z.boolean().nullable().optional(),
+      banReason: z.string().nullable().optional(),
+      banExpires: z.coerce.date().nullable().optional(),
     }))).query(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any),
     create: publicProcedure.input(z.object({
       id: z.string(),
@@ -84,6 +93,10 @@ const appRouter = t.router({
         accessTokenExpiresAt: z.date(),
         refreshTokenExpiresAt: z.date(),
       })).optional(),
+      role: z.enum(['admin', 'user']),
+      banned: z.boolean().nullable().optional(),
+      banReason: z.string().nullable().optional(),
+      banExpires: z.coerce.date().nullable().optional(),
     }).omit({
       id: true,
       createdAt: true,
@@ -114,6 +127,10 @@ const appRouter = t.router({
         accessTokenExpiresAt: z.date(),
         refreshTokenExpiresAt: z.date(),
       })).optional(),
+      role: z.enum(['admin', 'user']),
+      banned: z.boolean().nullable().optional(),
+      banReason: z.string().nullable().optional(),
+      banExpires: z.coerce.date().nullable().optional(),
     })).mutation(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any),
     update: publicProcedure.input(z.object({
       id: z.string(),
@@ -141,6 +158,10 @@ const appRouter = t.router({
           accessTokenExpiresAt: z.date(),
           refreshTokenExpiresAt: z.date(),
         })).optional(),
+        role: z.enum(['admin', 'user']),
+        banned: z.boolean().nullable().optional(),
+        banReason: z.string().nullable().optional(),
+        banExpires: z.coerce.date().nullable().optional(),
       }).omit({
         id: true,
         createdAt: true,
@@ -172,6 +193,10 @@ const appRouter = t.router({
         accessTokenExpiresAt: z.date(),
         refreshTokenExpiresAt: z.date(),
       })).optional(),
+      role: z.enum(['admin', 'user']),
+      banned: z.boolean().nullable().optional(),
+      banReason: z.string().nullable().optional(),
+      banExpires: z.coerce.date().nullable().optional(),
     })).mutation(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any),
     delete: publicProcedure.input(z.object({
       id: z.string(),
@@ -199,6 +224,10 @@ const appRouter = t.router({
         accessTokenExpiresAt: z.date(),
         refreshTokenExpiresAt: z.date(),
       })).optional(),
+      role: z.enum(['admin', 'user']),
+      banned: z.boolean().nullable().optional(),
+      banReason: z.string().nullable().optional(),
+      banExpires: z.coerce.date().nullable().optional(),
     })).mutation(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any)
   })
 });

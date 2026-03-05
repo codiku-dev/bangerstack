@@ -9,6 +9,7 @@ import { TRPCModule } from 'nestjs-trpc';
 import { AppRouter } from '@api/src/app.router';
 import { TrpcMiddlewaresModule } from '@api/src/infrastructure/middlewares/trpc-middlewares.module';
 import { PublicPathScannerService, TRPC_ROUTER_TYPES } from '@api/src/infrastructure/middlewares/public-path-scanner.service';
+import { RolesPathScannerService } from '@api/src/infrastructure/middlewares/roles-path-scanner.service';
 import { UserRouter } from '@api/src/features/users/users.router';
 import { TrpcPanelController } from '@api/src/infrastructure/docs/docs.controller';
 import { AuthModule } from '@thallesp/nestjs-better-auth';
@@ -36,6 +37,7 @@ import { SignInHook } from './features/authentication/signin-hook';
     AppContext,
     { provide: TRPC_ROUTER_TYPES, useValue: [AppRouter, UserRouter] },
     PublicPathScannerService,
+    RolesPathScannerService,
     SignUpHook,
     SignInHook
   ],
