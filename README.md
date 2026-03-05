@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚀 Turbo Template
+# 🚀 Bangerstack
 
 **A blazing-fast, type-safe monorepo starter with Next.js, NestJS, tRPC, and Tailwind CSS**
 
