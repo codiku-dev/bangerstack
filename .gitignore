@@ -5,9 +5,6 @@ node_modules
 .pnp
 .pnp.js
 
-# Local env files
-.env.prod
-.env.staging
 
 !*.example
 
