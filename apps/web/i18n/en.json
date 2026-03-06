@@ -26,7 +26,8 @@
       "apiProtection": "API protection",
       "autoDoc": "Auto documentation",
       "authentication": "Authentication",
-      "logging": "Backend Network Logging"
+      "logging": "Backend Network Logging",
+      "encryptedSecrets": "Encrypted .env (dotenvx)"
     },
     "descriptions": {
       "fullstackTypeSafety": "Create a NestJS endpoint and call it from the frontend with complete type safety.",
@@ -37,7 +38,8 @@
       "apiProtection": "AuthGuardRouter + @Public for public routes, protected routes require a session. Try both fetches below.",
       "autoDoc": "We use trpc-ui to expose your tRPC API. The documentation is generated automatically from your routers and Zod schemas.",
       "authentication": "Sign in, sign up and session management on the front-end with Better Auth.",
-      "logging": "Use AuthGuardRouter with logs: true to get formatted request logs (URL, meta, response) in the terminal."
+      "logging": "Use AuthGuardRouter with logs: true to get formatted request logs (URL, meta, response) in the terminal.",
+      "encryptedSecrets": "Variables in .env.production are encrypted with dotenvx and can be safely committed. In CI, only set the private key from .env.keys."
     },
     "step1": {
       "title": "Fullstack type safety",
@@ -108,6 +110,18 @@
       "intro": "We use trpc-ui to expose your tRPC API. The documentation is generated automatically from your routers and Zod schemas.",
       "screenshotAlt": "trpc-ui API documentation interface",
       "openDocs": "Open trpc-ui"
+    },
+    "step10": {
+      "title": "Encrypted .env with dotenvx",
+      "intro": "With dotenvx, your .env.production (and other env files) are automatically encrypted. You can safely push them to the repo—secrets are never stored in plain text.",
+      "exampleTitle": "Example: .env.production (safe to commit)",
+      "encryptedBadge": "Encrypted",
+      "encryptedComment": "values can be committed",
+      "ciTitle": "CI / production: the only secret",
+      "privateBadge": "Private – never commit",
+      "keysComment": "Private decryption keys – backup with dotenvx ops backup",
+      "ciHint": "In your CI (GitHub Actions, Vercel, etc.), set only this env var. dotenvx will decrypt .env.production at runtime.",
+      "ciOnlyKey": "In CI: set DOTENV_PRIVATE_KEY_PRODUCTION (from .env.keys) as the only secret. No need to copy each variable."
     }
   },
   "I18nExample": {
