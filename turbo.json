@@ -4,11 +4,12 @@
   "tasks": {
     "dev": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "env": ["DOTENV_PRIVATE_KEY_PRODUCTION"]
     },
     "start:prod": {
       "cache": false,
-      "env": ["DOTENV_PRIVATE_KEY_PRODUCTION","DATABASE_URL", "PORT", "POSTGRES_USER", "POSTGRES_PASSWORD", "POSTGRES_DB", "POSTGRES_PORT", "BETTER_AUTH_SECRET",  "FRONTEND_URL"]
+      "env": ["DOTENV_PRIVATE_KEY_PRODUCTION"]
     },
     "start": {
       "cache": false
