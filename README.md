@@ -554,7 +554,7 @@ bun check-env:watch
 **How it works:**
 - Each app/package can have an `env-type.ts` file defining required env vars using Zod
 - The validator checks that all required variables are present and valid
-- Automatically loads `.env.local.development`, `.env.production`, or `.env` files
+- Automatically loads  `.env.production`, or `.env` files
 - Runs in watch mode during `bun dev` to catch missing env vars early
 
 **Generate env types from existing `.env` files:**

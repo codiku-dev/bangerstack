@@ -45,7 +45,6 @@
     "@repo/typescript-config": "*",
     "chokidar": "^4.0.1",
     "concurrently": "^9.1.0",
-    "dotenv": "^16.4.7",
     "prettier": "^3.2.5",
     "turbo": "^2.8.3"
   },

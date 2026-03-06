@@ -1,10 +1,9 @@
-import { config } from 'dotenv';
+import { config } from '@dotenvx/dotenvx';
 import { resolve } from 'path';
 import { defineConfig } from 'prisma/config';
 
 // Load .env file from the api directory
 config({ path: resolve(__dirname, '.env') });
-config({ path: resolve(__dirname, '.env.local.development') });
 config({ path: resolve(__dirname, '.env.production') });
 
 const databaseUrl = process.env.DATABASE_URL;

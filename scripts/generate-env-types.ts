@@ -9,11 +9,11 @@
 
 import * as fs from "node:fs";
 import * as path from "node:path";
-import { parse } from "dotenv";
+import { parse } from "@dotenvx/dotenvx";
 
 const ROOT = process.cwd();
 
-const ENV_CANDIDATES = [".env.local.development", ".env.production", ".env"] as const;
+const ENV_CANDIDATES = [".env.production", ".env"] as const;
 const SKIP_DIRS = new Set(["node_modules", ".git"]);
 
 function isIdent(k: string): boolean {

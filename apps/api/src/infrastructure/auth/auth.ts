@@ -1,4 +1,4 @@
-import { config } from "dotenv";
+import { config } from "@dotenvx/dotenvx";
 import { resolve } from "path";
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
@@ -10,7 +10,6 @@ import { admin } from "better-auth/plugins"
 // Use process.cwd() so it works from dist/ (nest start) where cwd is apps/api.
 const apiRoot = process.cwd();
 config({ path: resolve(apiRoot, ".env") });
-config({ path: resolve(apiRoot, ".env.local.development") });
 config({ path: resolve(apiRoot, ".env.production") });
 
 const connectionString = process.env.DATABASE_URL

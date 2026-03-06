@@ -78,7 +78,7 @@ export function EnvStep() {
         </h3>
         <div className="grid gap-8 lg:grid-cols-2">
           <StyledTerminal
-            title=".env.local.development"
+            title=".env"
             badge={<Badge size="sm">{t4('envFile')}</Badge>}
             size="sm"
             contentPadding="compact"

@@ -6,14 +6,14 @@
  * Run: bun run scripts/check-env-all-apps.ts
  */
 
-import { config } from "dotenv";
+import { config } from "@dotenvx/dotenvx";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { pathToFileURL } from "node:url";
 
 const ROOT = process.cwd();
 const SKIP_DIRS = new Set(["node_modules", ".git"]);
-const ENV_FILES = [".env.local.development", ".env.production", ".env", ".env.development"] as const;
+const ENV_FILES = [".env.production", ".env"] as const;
 
 function* walkDirs(dir: string): Generator<string> {
   try {
