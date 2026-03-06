@@ -5,11 +5,11 @@
   "private": true,
   "scripts": {
     "dotenvx": "dotenvx",
-    "dev": "dotenvx run -- next dev --webpack --port 3000",
-    "build": "dotenvx run -- next build --webpack",
-    "start": "dotenvx run -- next start",
-    "start:prod": "dotenvx run -- next start",
-    "lint": "dotenvx run -- next lint --max-warnings 0",
+    "dev": "dotenvx run -f .env -- next dev --webpack --port 3000",
+    "build": "dotenvx run -f .env.production -- next build --webpack",
+    "start": "dotenvx run -f .env.production -- next start",
+    "start:prod": "dotenvx run -f .env.production -- next start",
+    "lint": "dotenvx run -f .env.production -- next lint --max-warnings 0",
     "check-types": "tsc --noEmit"
   },
   "dependencies": {

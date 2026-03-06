@@ -244,35 +244,6 @@ The tRPC UI is automatically generated from your tRPC router definitions:
 3. **Type Inference**: Uses TypeScript types to show exact return types
 4. **Interactive Testing**: Connects to your tRPC endpoint to execute procedures
 
-### Configuration
-
-The tRPC UI is configured in `apps/api/src/infrastructure/docs/docs.controller.ts`:
-
-```typescript
-@Controller("docs")
-export class TrpcPanelController {
-  @All()
-  panel(): string {
-    return renderTrpcPanel(this.appRouter, {
-      url: process.env.TRPC_URL, // e.g., "http://localhost:3090/trpc"
-      meta: {
-        title: "API Documentation",
-        description: "This is the documentation of the API.",
-      },
-    });
-  }
-}
-```
-
-### Environment Setup
-
-Make sure your `.env` file includes:
-
-```env
-TRPC_URL=http://localhost:3090/trpc
-```
-
-This tells tRPC UI where to send requests when testing endpoints.
 
 ### Usage Example
 
@@ -305,20 +276,6 @@ This tells tRPC UI where to send requests when testing endpoints.
 - 📱 **Mobile-friendly** - Test your API on any device
 - 🔒 **Development Only** - Typically disabled in production (you can add environment checks)
 
-### Customization
-
-You can customize the UI by modifying the `renderTrpcPanel` options:
-
-```typescript
-renderTrpcPanel(this.appRouter, {
-  url: process.env.TRPC_URL,
-  meta: {
-    title: "My Awesome API",
-    description: "Custom description here",
-  },
-  // Add custom styling, themes, etc.
-});
-```
 
 ---
 
@@ -340,7 +297,6 @@ The `LoggedMiddleware` provides comprehensive request logging:
 ### How It Works
 
 The middleware intercepts all tRPC procedures and logs:
-- Request URL (built from `TRPC_URL` env variable)
 - Input parameters
 - Response data or error details
 - Execution duration in milliseconds
@@ -424,10 +380,7 @@ The middleware uses NestJS's `ConsoleLogger` and is registered in `TrpcMiddlewar
 export class TrpcMiddlewaresModule { }
 ```
 
-Make sure your `.env` file includes:
-```env
-TRPC_URL=http://localhost:3090
-```
+
 
 This is used to build the full request URL in logs.
 

@@ -44,7 +44,6 @@ async function bootstrap() {
   const serverUrl = await app.getUrl();
   console.log(`🚀 Backend     : ${serverUrl}/trpc/app.hello`);
   console.log(`📚 Docs        : ${serverUrl}/docs`);
-  console.log(`🎨 Frontend    : ${env.FRONTEND_URL}`);
 }
 
 void bootstrap();
