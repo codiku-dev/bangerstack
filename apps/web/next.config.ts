@@ -1,8 +1,17 @@
 // @ts-check
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { config as loadEnv } from "@dotenvx/dotenvx";
 import createNextIntlPlugin from "next-intl/plugin";
 
-loadEnv()
+// Next.js only loads standard .env* names; load all .env* so NEXT_PUBLIC_* are available.
+const dir = path.dirname(fileURLToPath(import.meta.url));
+if (process.env.NODE_ENV === 'development') {
+  loadEnv({ path: path.resolve(dir, '.env') });
+} else {
+  loadEnv({ path: path.resolve(dir, '.env.production') });
+}
 
 const withNextIntl = createNextIntlPlugin();
 
