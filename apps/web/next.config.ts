@@ -9,8 +9,6 @@ import createNextIntlPlugin from "next-intl/plugin";
 const dir = path.dirname(fileURLToPath(import.meta.url));
 if (process.env.NODE_ENV === 'development') {
   loadEnv({ path: path.resolve(dir, '.env') });
-} else {
-  loadEnv({ path: path.resolve(dir, '.env.production') });
 }
 
 const withNextIntl = createNextIntlPlugin();
