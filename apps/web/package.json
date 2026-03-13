@@ -5,15 +5,14 @@
   "private": true,
   "scripts": {
     "dotenvx": "dotenvx",
-    "dev": "dotenvx run --convention=nextjs -f .env -- next dev --webpack --port 3000",
-    "build": "dotenvx run --convention=nextjs -f .env.production -- next build --webpack",
-    "start": "dotenvx run --convention=nextjs -f .env.production -- next start",
-    "start:prod": "dotenvx run --convention=nextjs -f .env.production -- next start",
-    "lint": "dotenvx run --convention=nextjs -f .env.production -- next lint --max-warnings 0",
+    "dev": "dotenvx run -f .env -- next dev --webpack --port 3000",
+    "build": "dotenvx run -f .env.production -- next build --webpack",
+    "start": "dotenvx run -f .env.production -- next start",
+    "start:prod": "dotenvx run -f .env.production -- next start",
+    "lint": "dotenvx run -f .env.production -- next lint --max-warnings 0",
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@daveyplate/better-auth-ui": "^3.3.15",
     "@repo/trpc": "*",
     "@repo/ui": "*",
     "better-auth": "^1.4.18",
