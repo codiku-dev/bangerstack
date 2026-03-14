@@ -2,7 +2,9 @@
  * Generated from .env.local.development. 
  * Regenerated when .env.local.development changes (generate-env-types script).
  */
+import { config } from "dotenv";
 import { z } from "zod";
+import { resolve } from "node:path";
 
 export const envSchema = z.object({
   BETTER_AUTH_SECRET: z.string(),
@@ -25,5 +27,11 @@ declare global {
 }
 
 export function parseEnv(): Env {
+  if (process.env['NODE_ENV'] === 'development') {
+    config({ path: resolve(__dirname, '.env') });
+  } else {
+    config({ path: resolve(__dirname, '.env.production') });
+  }
+  console.log(" the env in parseEnv")
   return envSchema.parse(process.env);
 }

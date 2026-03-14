@@ -8,11 +8,7 @@ import { env } from 'node:process';
 import { config } from '@dotenvx/dotenvx';
 import { resolve } from 'node:path';
 
-if (process.env['NODE_ENV'] === 'development') {
-  config({ path: resolve(__dirname, '.env') });
-} else {
-  config({ path: resolve(__dirname, '.env.production') });
-}
+
 
 function checkEnvVariablesAgaintZodSchema() {
   try {
