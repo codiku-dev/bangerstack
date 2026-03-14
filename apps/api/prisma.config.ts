@@ -3,8 +3,9 @@ import { resolve } from 'path';
 import { defineConfig } from 'prisma/config';
 
 // Load .env file from the api directory
-config({ path: resolve(__dirname, '.env') });
-config({ path: resolve(__dirname, '.env.production') });
+if (process.env['NODE_ENV'] === 'development') {
+  config({ path: resolve(__dirname, '.env') });
+}
 
 const databaseUrl = process.env.DATABASE_URL;
 

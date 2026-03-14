@@ -9,8 +9,10 @@ import { admin } from "better-auth/plugins"
 // Load env before creating Prisma (auth.ts runs at import time, before Nest ConfigModule).
 // Use process.cwd() so it works from dist/ (nest start) where cwd is apps/api.
 const apiRoot = process.cwd();
-config({ path: resolve(apiRoot, ".env") });
-config({ path: resolve(apiRoot, ".env.production") });
+
+if (process.env['NODE_ENV'] === 'development') {
+    config({ path: resolve(apiRoot, ".env") });
+}
 
 const connectionString = process.env.DATABASE_URL
 
