@@ -32,6 +32,6 @@ export function parseEnv(): Env {
   } else {
     config({ path: resolve(__dirname, '.env.production') });
   }
-  console.log(" the env in parseEnv")
+  console.log(" the env in parseEnv", process.env)
   return envSchema.parse(process.env);
 }
