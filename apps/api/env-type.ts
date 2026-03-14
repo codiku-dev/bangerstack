@@ -27,11 +27,9 @@ declare global {
 }
 
 export function parseEnv(): Env {
+  // En dev on charge .env ; en prod l’env est déjà injecté par dotenvx run -f .env.production
   if (process.env['NODE_ENV'] === 'development') {
-    config({ path: resolve(__dirname, '.env') });
-  } else {
-    config({ path: resolve(__dirname, '.env.production') });
+    config({ path: resolve(process.cwd(), '.env') });
   }
-  console.log(" the env in parseEnv", process.env)
   return envSchema.parse(process.env);
 }

@@ -5,8 +5,6 @@ import { AppModule } from '@api/src/app.module';
 import { PrismaExceptionFilter } from '@api/src/infrastructure/prisma/prisma-exception.filter';
 import { parseEnv } from '@api/env-type';
 import { env } from 'node:process';
-import { config } from '@dotenvx/dotenvx';
-import { resolve } from 'node:path';
 
 
 
