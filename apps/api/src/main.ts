@@ -5,6 +5,14 @@ import { AppModule } from '@api/src/app.module';
 import { PrismaExceptionFilter } from '@api/src/infrastructure/prisma/prisma-exception.filter';
 import { parseEnv } from '@api/env-type';
 import { env } from 'node:process';
+import { config } from '@dotenvx/dotenvx';
+import { resolve } from 'node:path';
+
+if (process.env['NODE_ENV'] === 'development') {
+  config({ path: resolve(__dirname, '.env') });
+} else {
+  config({ path: resolve(__dirname, '.env.production') });
+}
 
 function checkEnvVariablesAgaintZodSchema() {
   try {
@@ -26,7 +34,8 @@ async function bootstrap() {
 
   checkEnvVariablesAgaintZodSchema();
 
-  console.log("COTE BACK L ENV ", process.env);
+
+
   const app = await NestFactory.create(AppModule, {
     bodyParser: false,
     cors: {
