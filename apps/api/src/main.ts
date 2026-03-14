@@ -29,7 +29,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     bodyParser: false,
     cors: {
-      origin: "https://bangerstack.codiku.com",
+      origin: process.env.FRONTEND_URL,
       credentials: true,
 
     },
