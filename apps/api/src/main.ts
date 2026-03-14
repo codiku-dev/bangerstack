@@ -26,6 +26,7 @@ async function bootstrap() {
 
   checkEnvVariablesAgaintZodSchema();
 
+  console.log("COTE BACK L ENV ", process.env);
   const app = await NestFactory.create(AppModule, {
     bodyParser: false,
     cors: {
