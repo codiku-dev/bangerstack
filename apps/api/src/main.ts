@@ -29,11 +29,11 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     bodyParser: false,
     cors: {
-      origin: env.FRONTEND_URL,
+      origin: "https://bangerstack.codiku.com",
       credentials: true,
+
     },
   });
-
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalFilters(new PrismaExceptionFilter());
 
