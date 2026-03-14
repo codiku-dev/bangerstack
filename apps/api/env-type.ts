@@ -2,7 +2,7 @@
  * Generated from .env.local.development. 
  * Regenerated when .env.local.development changes (generate-env-types script).
  */
-import { config } from "dotenv";
+import { config } from "@dotenvx/dotenvx";
 import { z } from "zod";
 import { resolve } from "node:path";
 
