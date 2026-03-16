@@ -14,7 +14,7 @@
     "test:e2e": "dotenvx run -- jest --config ./test/jest-e2e.json",
     "lint": "dotenvx run -- eslint \"{src,apps,libs,test}/**/*.ts\"",
     "db:start": "docker compose up -d",
-    "db:update": "dotenvx run -- prisma migrate dev && prisma generate",
+    "db:update": "dotenvx run -f .env -- prisma migrate dev && dotenvx run -f .env -- prisma generate",
     "db:studio": "dotenvx run -- prisma studio"
   },
   "dependencies": {

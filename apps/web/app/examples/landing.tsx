@@ -12,7 +12,6 @@ import { ApiProtetionStep } from './api-protection-step';
 import { AuthStep } from './authentication/auth-step';
 import { AutoDocStep } from './auto-doc-step';
 import { LoggingStep } from './logging-step';
-import { SecretsStep } from './secrets-step';
 import { Badge } from '@repo/ui/components/badge';
 
 function BangerStackLogo(p: { className?: string }) {
@@ -52,7 +51,7 @@ const CREATE_CMD = 'npx create-bangerstack@latest';
 export default function Home() {
   const t = useTranslations('Landing');
   const [activeStep, setActiveStep] = useState<
-    1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
+    1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
   >(1);
   const [copied, setCopied] = useState(false);
 
@@ -67,7 +66,7 @@ export default function Home() {
   const hasScrolledDownRef = useRef(false);
   const lastScrollYRef = useRef(0);
 
-  const selectStep = useCallback((step: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10) => {
+  const selectStep = useCallback((step: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9) => {
     setActiveStep(step);
     // Pas de scroll au clic : évite la remontée puis redescente quand on change de catégorie
   }, []);
@@ -234,7 +233,6 @@ export default function Home() {
             { num: 7, emoji: '📄', label: t('steps.autoDoc') },
             { num: 8, emoji: '🔑', label: t('steps.authentication') },
             { num: 9, emoji: '📋', label: t('steps.logging') },
-            { num: 10, emoji: '🔐', label: t('steps.encryptedSecrets') },
           ].map((step, index) => {
             const isActive = activeStep === step.num;
             return (
@@ -242,7 +240,7 @@ export default function Home() {
                 key={step.num}
                 type="button"
                 onClick={() =>
-                  selectStep(step.num as 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10)
+                  selectStep(step.num as 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)
                 }
                 aria-current={isActive ? 'step' : undefined}
                 initial={{ opacity: 0, y: 12 }}
@@ -304,7 +302,6 @@ export default function Home() {
                     {activeStep === 7 && `📄 ${t('step7.title')}`}
                     {activeStep === 8 && `🔑 ${t('step8.title')}`}
                     {activeStep === 9 && `📋 ${t('step9.title')}`}
-                    {activeStep === 10 && `🔐 ${t('step10.title')}`}
                   </h2>
                   <p className="text-zinc-400">
                     {activeStep === 1 && t('descriptions.fullstackTypeSafety')}
@@ -316,7 +313,6 @@ export default function Home() {
                     {activeStep === 7 && t('descriptions.autoDoc')}
                     {activeStep === 8 && t('descriptions.authentication')}
                     {activeStep === 9 && t('descriptions.logging')}
-                    {activeStep === 10 && t('descriptions.encryptedSecrets')}
                   </p>
                 </motion.div>
               )}
@@ -341,7 +337,6 @@ export default function Home() {
                 {activeStep === 7 && <AutoDocStep />}
                 {activeStep === 8 && <AuthStep />}
                 {activeStep === 9 && <LoggingStep />}
-                {activeStep === 10 && <SecretsStep />}
               </motion.div>
             </AnimatePresence>
           </div>

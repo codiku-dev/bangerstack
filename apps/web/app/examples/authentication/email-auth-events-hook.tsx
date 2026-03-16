@@ -2,7 +2,7 @@ import { StyledTerminal } from '@web/app/examples/components/StyledTerminal';
 import { Badge } from '@repo/ui/components/badge';
 import { useTranslations } from 'next-intl';
 
-export function AuthEventsHook() {
+export function EmailAuthEventsHook() {
   const t = useTranslations('Authentication.authEvents');
   return (
     <StyledTerminal

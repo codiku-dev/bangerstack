@@ -16,4 +16,10 @@ export class SignInHook {
         console.log("SIGNIN HOOK");
         return ctx;
     }
+
+    @BeforeHook("/sign-in/social")
+    async handleSocial(ctx: AuthHookContext) {
+        console.log("SIGNIN HOOK SOCIAL");
+        return ctx;
+    }
 }

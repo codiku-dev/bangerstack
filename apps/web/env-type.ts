@@ -6,6 +6,7 @@ import { z } from "zod";
 
 export const envSchema = z.object({
   NEXT_PUBLIC_API_BASE_URL: z.string(),
+  NEXT_PUBLIC_GOOGLE_AUTH_CALLBACK_URL: z.string(),
 });
 
 export type Env = z.infer<typeof envSchema>;

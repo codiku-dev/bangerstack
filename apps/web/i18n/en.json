@@ -21,7 +21,7 @@
       "fullstackTypeSafety": "Fullstack type safety",
       "shareResources": "Share resources",
       "storybook": "Storybook",
-      "typedEnv": "Typed and validated env",
+      "typedEnv": "Validated Encrypted typed env",
       "internationalisation": "Internationalisation",
       "apiProtection": "API protection",
       "autoDoc": "Auto documentation",
@@ -33,7 +33,7 @@
       "fullstackTypeSafety": "Create a NestJS endpoint and call it from the frontend with complete type safety.",
       "shareResources": "Create a simple React component and share it between your apps.",
       "storybook": "Create your stories and develop your components in isolation.",
-      "typedEnv": "Typed and validated environment variables at startup.",
+      "typedEnv": "Validated and typed environment variables at startup (with dotenvx encrypted secrets).",
       "internationalisation": "Use next-intl to translate your application easily.",
       "apiProtection": "AuthGuardRouter + @Public for public routes, protected routes require a session. Try both fetches below.",
       "autoDoc": "We use trpc-ui to expose your tRPC API. The documentation is generated automatically from your routers and Zod schemas.",
@@ -63,9 +63,10 @@
       "result": "Result"
     },
     "step4": {
-      "title": "Typed and validated env",
+      "title": "Validated Encrypted typed env",
       "stronglyTypeEnv": "Strongly type your .env",
       "typedEnv": "Typed env",
+      "encryptedEnvTitle": "Encrypted env",
       "typedEnvBadge": "Strongly typed env",
       "zodSchemaBadge": "Zod schema",
       "typedVarLabel": "Strongly typed env variable",
@@ -98,7 +99,12 @@
       "receiveSession": "You can receive the session"
     },
     "step8": {
-      "title": "Authentication with Better Auth"
+      "title": "Authentication with Better Auth",
+      "signupTitle": "Sign up",
+      "signinTitle": "Sign in",
+      "googleSigninTitle": "Sign in with Google",
+      "accountTitle": "Account",
+      "authEventsTitle": "Authentication events"
     },
     "step9": {
       "title": "Backend Network Logging",

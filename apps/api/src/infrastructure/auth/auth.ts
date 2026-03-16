@@ -5,6 +5,7 @@ import { prismaAdapter } from "better-auth/adapters/prisma";
 import { PrismaClient } from "@api/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { admin } from "better-auth/plugins"
+import { createAuthMiddleware, APIError } from "better-auth/api";
 
 // Load env before creating Prisma (auth.ts runs at import time, before Nest ConfigModule).
 // Use process.cwd() so it works from dist/ (nest start) where cwd is apps/api.
@@ -18,11 +19,22 @@ const connectionString = process.env.DATABASE_URL
 
 const prisma = new PrismaClient({ adapter: new PrismaPg({ connectionString }) });
 export const auth = betterAuth({
-
+    baseURL: process.env.BETTER_AUTH_URL,
+    socialProviders: {
+        google: {
+            clientId: process.env.AUTH_GOOGLE_CLIENT_ID,
+            clientSecret: process.env.AUTH_GOOGLE_CLIENT_SECRET
+        },
+    },
     plugins: [
         admin(),
     ],
-    hooks: {},
+    hooks: {
+        before: createAuthMiddleware(async (ctx) => {
+            // console.log("BEFORE HOOK", ctx);
+            return ctx;
+        }),
+    },
     database: prismaAdapter(prisma, {
         provider: "postgresql",
         // debugLogs: true

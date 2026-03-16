@@ -21,7 +21,7 @@
       "fullstackTypeSafety": "Fullstack type safety",
       "shareResources": "Partager des ressources",
       "storybook": "Storybook",
-      "typedEnv": "Env typés et validés",
+      "typedEnv": "Env validés, cryptés et typés",
       "internationalisation": "Internationalisation",
       "apiProtection": "Protection des API",
       "autoDoc": "Auto documentation",
@@ -33,7 +33,7 @@
       "fullstackTypeSafety": "Créez un endpoint NestJS et appelez-le côté front avec une sécurité de types complète.",
       "shareResources": "Créez un composant React simple et partagez-le entre vos apps.",
       "storybook": "Créez vos stories et développez vos composants en isolation.",
-      "typedEnv": "Variables d'environnement typées et validées au démarrage.",
+      "typedEnv": "Variables d'environnement validées et typées au démarrage (avec secrets chiffrés via dotenvx).",
       "internationalisation": "Utilisez next-intl pour traduire votre application facilement.",
       "apiProtection": "AuthGuardRouter + @Public pour les routes publiques, les routes protégées exigent une session. Testez les deux appels ci-dessous.",
       "autoDoc": "Nous utilisons trpc-ui pour exposer votre API tRPC. La documentation est générée automatiquement à partir de vos routers et schémas Zod.",
@@ -63,9 +63,10 @@
       "result": "Résultat"
     },
     "step4": {
-      "title": "Variables d'environnement typées et validées",
+      "title": "Variables d'environnement validées, cryptées et typées",
       "stronglyTypeEnv": "Definissez le schema de vos .env",
       "typedEnv": "Type safety de process.env",
+      "encryptedEnvTitle": ".env chiffrés",
       "typedEnvBadge": "Env fortement typé",
       "zodSchemaBadge": "Schéma Zod",
       "typedVarLabel": "Variable d'env fortement typée",
@@ -98,7 +99,12 @@
       "receiveSession": "Vous pouvez recevoir la session"
     },
     "step8": {
-      "title": "Authentification avec Better Auth"
+      "title": "Authentification avec Better Auth",
+      "signupTitle": "Inscription",
+      "signinTitle": "Connexion",
+      "googleSigninTitle": "Connexion avec Google",
+      "accountTitle": "Compte",
+      "authEventsTitle": "Événements d’authentification"
     },
     "step9": {
       "title": "Logging back-end",

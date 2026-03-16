@@ -1,11 +1,5 @@
-import { config } from '@dotenvx/dotenvx';
-import { resolve } from 'path';
 import { defineConfig } from 'prisma/config';
 
-// Load .env file from the api directory
-if (process.env['NODE_ENV'] === 'development') {
-  config({ path: resolve(__dirname, '.env') });
-}
 
 const databaseUrl = process.env.DATABASE_URL;
 
