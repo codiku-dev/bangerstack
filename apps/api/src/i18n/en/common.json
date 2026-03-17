@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "signup_email": {
+      "subject": "Verify your email address",
+      "heading": "Confirm your email",
+      "cta": "Verify email"
+    }
+   
+  }
+}

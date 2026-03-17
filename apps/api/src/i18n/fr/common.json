@@ -1,0 +1,8 @@
+{
+  "HELLO": "Bonjour",
+  "EMAIL": {
+    "VERIFY_SUBJECT": "Vérifie ton adresse e-mail",
+    "VERIFY_HEADING": "Confirme ton e-mail",
+    "VERIFY_CTA": "Valider mon e-mail"
+  }
+}

@@ -8,6 +8,7 @@ import { admin } from "better-auth/plugins"
 import { createAuthMiddleware, APIError } from "better-auth/api";
 import { sendEmail } from "@api/src/libs/email-libs";
 import { ConfirmSignup } from "@repo/emails";
+import { getLangFromRequest, t } from "@api/src/i18n/i18n-utils";
 // Load env before creating Prisma (auth.ts runs at import time, before Nest ConfigModule).
 // Use process.cwd() so it works from dist/ (nest start) where cwd is apps/api.
 const apiRoot = process.cwd();
@@ -48,9 +49,10 @@ export const auth = betterAuth({
     emailVerification: {
         sendOnSignUp: true,
         sendVerificationEmail: async ({ user, url, token }, request) => {
+            const lang = getLangFromRequest({ request });
             void sendEmail({
                 to: user.email,
-                subject: "Verify your email address",
+                subject: t({ lang, key: "auth.signup_email.subject" }),
                 component: ConfirmSignup({ name: user.name, url }),
             });
         },

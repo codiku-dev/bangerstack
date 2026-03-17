@@ -18,17 +18,14 @@
     "db:studio": "dotenvx run -- prisma studio"
   },
   "dependencies": {
-    "@react-email/components": "^1.0.0",
-    "@react-email/render": "^1.0.0",
-    "react": "^19.2.0",
-		"react-dom": "^19.2.0",
-    "@repo/emails": "*",
-
     "@nestjs/common": "^11.1.12",
     "@nestjs/core": "^11.1.12",
     "@nestjs/platform-express": "^11.1.12",
     "@prisma/adapter-pg": "^7.2.0",
     "@prisma/client": "^7.0.0",
+    "@react-email/components": "^1.0.0",
+    "@react-email/render": "^1.0.0",
+    "@repo/emails": "*",
     "@thallesp/nestjs-better-auth": "^2.2.5",
     "@trpc/server": "11.8.1",
     "better-auth": "^1.4.17",
@@ -38,9 +35,12 @@
     "class-validator": "^0.14.1",
     "dotenv": "^16.4.5",
     "graphql": "^16.12.0",
+    "nestjs-i18n": "^10.6.0",
     "nestjs-trpc": "^1.6.1",
     "nodemailer": "^8.0.2",
     "pg": "^8.17.2",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "reflect-metadata": "^0.2.2",
     "run": "^1.5.0",
     "rxjs": "^7.8.2",
@@ -70,6 +70,6 @@
     "tsconfig-paths": "^4.2.0",
     "typescript": "5.9.3",
     "@types/react": "^19.2.3",
-		"@types/react-dom": "^19.2.2"
+    "@types/react-dom": "^19.2.2"
   }
 }

@@ -56,6 +56,5 @@ export async function sendEmail(p: SendEmailParams) {
     headers: p.headers,
   });
 
-  console.log('Email sent:', result);
   return result;
 }
