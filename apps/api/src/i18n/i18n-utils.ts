@@ -7,11 +7,18 @@ const apiRoot = process.cwd();
 const i18nCache = new Map<Lang, unknown>();
 
 export function getLangFromRequest(p: { request: unknown }): Lang {
-  const headers =
-    (p.request as { headers?: Record<string, string | string[] | undefined> })
-      ?.headers ?? {};
-
-  const raw = headers["accept-language"];
+  const headersAny = (p.request as { headers?: unknown })?.headers;
+  console.log("headersAny", headersAny);
+  let raw: string | string[] | null | undefined;
+  if (headersAny && typeof (headersAny as any).get === "function") {
+    raw = (headersAny as any).get("accept-language");
+    console.log("raw 1", raw);
+  } else if (headersAny && typeof headersAny === "object") {
+    console.log("headersAny is object", headersAny);
+    const h = headersAny as Record<string, string | string[] | undefined>;
+    raw = h["accept-language"] ?? h["Accept-Language"];
+    console.log("raw 2", raw);
+  }
   const first = Array.isArray(raw) ? raw[0] : raw;
   const lang = first?.split(",")?.[0]?.trim()?.toLowerCase();
 
