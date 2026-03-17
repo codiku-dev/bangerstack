@@ -67,6 +67,7 @@ export function SignupForm(p: {
       name: values.name,
       email: values.email,
       password: values.password,
+      callbackURL: process.env.NEXT_PUBLIC_GOOGLE_AUTH_CALLBACK_URL,
     });
     setResult(res ?? null);
   };

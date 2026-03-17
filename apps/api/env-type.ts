@@ -18,6 +18,11 @@ export const envSchema = z.object({
   AUTH_GOOGLE_CLIENT_SECRET: z.string(),
   FRONTEND_URL: z.string(),
   BETTER_AUTH_URL: z.string(),
+  //EMAIL
+  EMAIL_SMTP_PASSWORD: z.string(),
+  EMAIL_SMTP_HOST: z.string(),
+  EMAIL_SMTP_PORT: z.string(),
+  EMAIL_SMTP_USER: z.string(),
 });
 
 export type Env = z.infer<typeof envSchema>;

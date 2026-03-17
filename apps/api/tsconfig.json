@@ -3,6 +3,7 @@
   "compilerOptions": {
     "noPropertyAccessFromIndexSignature": true,
 
+    "jsx": "react-jsx",
     "sourceMap": true,
     "baseUrl": "./",
     "outDir": "./dist",
