@@ -42,12 +42,17 @@ function getTranslations(p: { lang: Lang }) {
   return json;
 }
 
-export function t(p: { lang: Lang; key: string }): string {
+export function t(p: {
+  lang: Lang;
+  key: string;
+  fallback: string;
+}): string {
   const dict = getTranslations({ lang: p.lang });
-  const value = p.key
-    .split(".")
-    .reduce<unknown>((acc, k) => (acc as Record<string, unknown>)?.[k], dict) as string;
+  const value = p.key.split(".").reduce<unknown>(
+    (acc, k) => (acc as Record<string, unknown>)?.[k],
+    dict
+  );
 
-  return value;
+  return typeof value === "string" ? value : p.fallback;
 }
 

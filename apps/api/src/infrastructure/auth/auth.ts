@@ -52,8 +52,12 @@ export const auth = betterAuth({
             const lang = getLangFromRequest({ request });
             void sendEmail({
                 to: user.email,
-                subject: t({ lang, key: "auth.signup_email.subject" }),
-                component: ConfirmSignup({ name: user.name, url }),
+                subject: t({
+                    lang,
+                    key: "auth.signup_email.subject",
+                    fallback: "Verify your email address",
+                }),
+                component: ConfirmSignup({ name: user.name, url, locale: lang }),
             });
         },
     },

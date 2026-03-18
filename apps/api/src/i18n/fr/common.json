@@ -1,8 +1,9 @@
 {
-  "HELLO": "Bonjour",
-  "EMAIL": {
-    "VERIFY_SUBJECT": "Vérifie ton adresse e-mail",
-    "VERIFY_HEADING": "Confirme ton e-mail",
-    "VERIFY_CTA": "Valider mon e-mail"
+  "auth": {
+    "signup_email": {
+      "subject": "Vérifie ton adresse e-mail",
+      "heading": "Confirme ton e-mail",
+      "cta": "Valider mon e-mail"
+    }
   }
 }

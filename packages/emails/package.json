@@ -16,14 +16,14 @@
     "export": "email export",
     "build": "tsup index.ts --format esm,cjs --dts --out-dir dist --clean"
   },
-  
   "peerDependencies": {
     "typescript": "^5"
   },
   "dependencies": {
     "@react-email/components": "1.0.9",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "react-intl": "^10.0.0"
   },
   "devDependencies": {
     "@react-email/preview-server": "5.2.9",
