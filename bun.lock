@@ -127,6 +127,8 @@
       "devDependencies": {
         "@react-email/preview-server": "5.2.9",
         "@types/bun": "latest",
+        "@types/react": "19.2.9",
+        "@types/react-dom": "19.2.3",
         "react-email": "5.2.9",
         "tsup": "^8.5.0",
       },
