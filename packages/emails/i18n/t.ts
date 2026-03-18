@@ -5,11 +5,11 @@ type Values = Record<string, string>;
 export function t(p: {
   locale: EmailLocale;
   key: string;
-  fallback: string;
+  fallback?: string;
   values?: Values;
 }): string {
   const dict = messages[p.locale] ?? messages.en;
-  const template = dict[p.key] ?? messages.en[p.key] ?? p.fallback;
+  const template = dict[p.key] ?? messages.en[p.key] ?? p.fallback ?? p.key;
 
   if (!p.values) return template;
 

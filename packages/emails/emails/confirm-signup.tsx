@@ -10,9 +10,9 @@ import {
   Section,
   Text,
 } from '@react-email/components';
-import { FormattedMessage, IntlProvider, useIntl } from 'react-intl';
-
-import { messages, type EmailLocale } from '../i18n/messages';
+import type { ReactElement } from 'react';
+import { t } from '../i18n/t';
+import { type EmailLocale } from '../i18n/messages';
 
 export type ConfirmSignupProps = {
   name: string | null;
@@ -20,21 +20,22 @@ export type ConfirmSignupProps = {
   locale: EmailLocale;
 };
 
-function ConfirmSignupEmail(p: ConfirmSignupProps & { displayName: string }) {
-  const intl = useIntl();
-  const preview = intl.formatMessage({
-    id: 'auth.signup.preview',
-  });
+export default function ConfirmSignup(p: ConfirmSignupProps): ReactElement {
+  const displayName = p.name ?? 'there';
 
   return (
     <Html>
       <Head />
-      <Preview>{preview}</Preview>
+      <Preview>
+        {t({
+          locale: p.locale,
+          key: 'auth.signup.preview',
+        })}
+      </Preview>
       <Body
         style={{
           backgroundColor: '#f3f4f6',
-          fontFamily:
-            '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
           padding: '24px 0',
         }}
       >
@@ -59,7 +60,10 @@ function ConfirmSignupEmail(p: ConfirmSignupProps & { displayName: string }) {
                 letterSpacing: '-0.03em',
               }}
             >
-              <FormattedMessage id="auth.signup.heading" />
+              {t({
+                locale: p.locale,
+                key: 'auth.signup.heading',
+              })}
             </Heading>
             <Text
               style={{
@@ -69,13 +73,17 @@ function ConfirmSignupEmail(p: ConfirmSignupProps & { displayName: string }) {
                 color: '#4b5563',
               }}
             >
-              <FormattedMessage
-                id="auth.signup.body.greeting"
-                values={{ name: p.displayName }}
-              />
+              {t({
+                locale: p.locale,
+                key: 'auth.signup.body.greeting',
+                values: { name: displayName },
+              })}
               <br />
               <br />
-              <FormattedMessage id="auth.signup.body.text" />
+              {t({
+                locale: p.locale,
+                key: 'auth.signup.body.text',
+              })}
             </Text>
             <Section style={{ textAlign: 'center', marginBottom: '18px' }}>
               <Button
@@ -92,7 +100,10 @@ function ConfirmSignupEmail(p: ConfirmSignupProps & { displayName: string }) {
                   letterSpacing: '0.03em',
                 }}
               >
-                <FormattedMessage id="auth.signup.cta" />
+                {t({
+                  locale: p.locale,
+                  key: 'auth.signup.cta',
+                })}
               </Button>
             </Section>
             <Text
@@ -103,7 +114,10 @@ function ConfirmSignupEmail(p: ConfirmSignupProps & { displayName: string }) {
                 color: '#6b7280',
               }}
             >
-              <FormattedMessage id="auth.signup.copy.label" />
+              {t({
+                locale: p.locale,
+                key: 'auth.signup.copy.label',
+              })}
               <br />
               <a
                 href={p.url}
@@ -125,22 +139,14 @@ function ConfirmSignupEmail(p: ConfirmSignupProps & { displayName: string }) {
                 color: '#9ca3af',
               }}
             >
-              <FormattedMessage id="auth.signup.footer" />
+              {t({
+                locale: p.locale,
+                key: 'auth.signup.footer',
+              })}
             </Text>
           </Section>
         </Container>
       </Body>
     </Html>
-  );
-}
-
-export default function ConfirmSignup(p: ConfirmSignupProps) {
-  const displayName = p.name ?? 'there';
-  const localeMessages = messages[p.locale] ?? messages.en;
-
-  return (
-    <IntlProvider locale={p.locale} messages={localeMessages}>
-      <ConfirmSignupEmail {...p} displayName={displayName} />
-    </IntlProvider>
   );
 }
