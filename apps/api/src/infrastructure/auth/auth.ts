@@ -5,7 +5,7 @@ import { prismaAdapter } from "better-auth/adapters/prisma";
 import { PrismaClient } from "@api/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { admin } from "better-auth/plugins"
-import { createAuthMiddleware, APIError } from "better-auth/api";
+import { createAuthMiddleware } from "better-auth/api";
 import { sendEmail } from "@api/src/libs/email-libs";
 import { ConfirmSignup } from "@repo/emails";
 import { getLangFromRequest, t } from "@api/src/i18n/i18n-utils";
