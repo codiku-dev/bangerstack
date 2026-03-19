@@ -7,6 +7,7 @@ import { SignupForm } from './email-signup-form';
 import { AccountForm } from './account-form';
 import { EmailAuthEventsHook } from './email-auth-events-hook';
 import { GoogleForm } from './google-signin-form';
+import { ResetPasswordForm } from './reset-password-form';
 
 const DEMO_PASSWORD = 'password123';
 
@@ -58,6 +59,12 @@ export function AuthStep() {
             {t('authEventsTitle')}
           </h3>
           <EmailAuthEventsHook />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold text-zinc-300 mb-3">
+            {t('resetPasswordTitle')}
+          </h3>
+          <ResetPasswordForm defaultEmail={demoEmail} />
         </div>
       </div>
     </div>

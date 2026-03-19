@@ -7,7 +7,7 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { admin } from "better-auth/plugins"
 import { createAuthMiddleware } from "better-auth/api";
 import { sendEmail } from "@api/src/libs/email-libs";
-import { ConfirmSignup } from "@repo/emails";
+import { ConfirmSignup, ResetPassword } from "@repo/emails";
 import { getLangFromRequest, t } from "@api/src/i18n/i18n-utils";
 // Load env before creating Prisma (auth.ts runs at import time, before Nest ConfigModule).
 // Use process.cwd() so it works from dist/ (nest start) where cwd is apps/api.
@@ -44,6 +44,21 @@ export const auth = betterAuth({
 
     emailAndPassword: {
         enabled: true,
+        sendResetPassword: async ({ user, url, token }, request) => {
+            const lang = getLangFromRequest({ request });
+            void sendEmail({
+                to: user.email,
+                subject: t({
+                    lang,
+                    key: "auth.reset_password.subject",
+                }),
+                component: ResetPassword({ name: user.name, url, locale: lang }),
+            });
+        },
+        onPasswordReset: async ({ user }, request) => {
+            // your logic here
+            console.log(`Password for user ${user.email} has been reset.`);
+        },
 
     },
     emailVerification: {
@@ -55,7 +70,6 @@ export const auth = betterAuth({
                 subject: t({
                     lang,
                     key: "auth.signup_email.subject",
-                    fallback: "Verify your email address",
                 }),
                 component: ConfirmSignup({ name: user.name, url, locale: lang }),
             });

@@ -17,7 +17,7 @@ import { RolesPathScannerService } from "@api/src/infrastructure/middlewares/rol
 import { UserRouter } from "@api/src/features/users/users.router";
 import { TrpcPanelController } from "@api/src/infrastructure/docs/docs.controller";
 import { AuthModule } from "@thallesp/nestjs-better-auth";
-import { auth } from "@api/src/infrastructure/auth/auth";
+import { auth } from "@api/src/features/authentication/auth";
 // Relative path so nestjs-trpc generator can resolve the context (it doesn't use path aliases)
 import { AppContext } from "./infrastructure/trpc/app-context";
 import { SignUpHook } from "./features/authentication/signup-hook";
@@ -53,4 +53,4 @@ import { SignInHook } from "./features/authentication/signin-hook";
     SignInHook,
   ],
 })
-export class AppModule {}
+export class AppModule { }

@@ -10,19 +10,20 @@ import {
   Section,
   Tailwind,
   Text,
-} from '@react-email/components';
-import type { ReactElement } from 'react';
-import { t } from '../i18n/t';
-import { type EmailLocale } from '../i18n/messages';
+} from "@react-email/components";
+import type { ReactElement } from "react";
 
-export type ConfirmSignupProps = {
+import { type EmailLocale } from "../i18n/messages";
+import { t } from "../i18n/t";
+
+export type ResetPasswordProps = {
   name: string | null;
   url: string;
   locale: EmailLocale;
 };
 
-export default function ConfirmSignup(p: ConfirmSignupProps): ReactElement {
-  const displayName = p.name ?? 'there';
+export default function ResetPassword(p: ResetPasswordProps): ReactElement {
+  const displayName = p.name ?? "there";
 
   return (
     <Html>
@@ -30,7 +31,7 @@ export default function ConfirmSignup(p: ConfirmSignupProps): ReactElement {
       <Preview>
         {t({
           locale: p.locale,
-          key: 'auth.signup.preview',
+          key: "auth.reset.preview",
         })}
       </Preview>
       <Tailwind>
@@ -43,20 +44,20 @@ export default function ConfirmSignup(p: ConfirmSignupProps): ReactElement {
             >
               {t({
                 locale: p.locale,
-                key: 'auth.signup.heading',
+                key: "auth.reset.heading",
               })}
             </Heading>
             <Text className="m-0 mb-[18px] text-sm leading-[22px] text-slate-600">
               {t({
                 locale: p.locale,
-                key: 'auth.signup.body.greeting',
+                key: "auth.reset.body.greeting",
                 values: { name: displayName },
               })}
               <br />
               <br />
               {t({
                 locale: p.locale,
-                key: 'auth.signup.body.text',
+                key: "auth.reset.body.text",
               })}
             </Text>
             <Section className="mb-[18px] text-center">
@@ -66,14 +67,14 @@ export default function ConfirmSignup(p: ConfirmSignupProps): ReactElement {
               >
                 {t({
                   locale: p.locale,
-                  key: 'auth.signup.cta',
+                  key: "auth.reset.cta",
                 })}
               </Button>
             </Section>
             <Text className="m-0 text-xs leading-5 text-slate-500">
               {t({
                 locale: p.locale,
-                key: 'auth.signup.copy.label',
+                key: "auth.reset.copy.label",
               })}
               <br />
               <a
@@ -91,7 +92,7 @@ export default function ConfirmSignup(p: ConfirmSignupProps): ReactElement {
               <Text className="m-0 text-[11px] leading-[18px] text-slate-400">
               {t({
                 locale: p.locale,
-                key: 'auth.signup.footer',
+                key: "auth.reset.footer",
               })}
             </Text>
           </Section>
@@ -101,3 +102,4 @@ export default function ConfirmSignup(p: ConfirmSignupProps): ReactElement {
     </Html>
   );
 }
+

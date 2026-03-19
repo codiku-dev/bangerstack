@@ -1,6 +1,6 @@
 import { TRPCMiddleware, MiddlewareOptions } from 'nestjs-trpc';
 import { Injectable } from '@nestjs/common';
-import { auth } from '@api/src/infrastructure/auth/auth';
+import { auth } from '@api/src/features/authentication/auth';
 
 @Injectable()
 export class PublicProcedureMiddleware implements TRPCMiddleware {

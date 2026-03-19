@@ -1,7 +1,7 @@
 import { TRPCMiddleware, MiddlewareOptions } from 'nestjs-trpc';
 import { Inject, Injectable, ConsoleLogger } from '@nestjs/common';
 import { TRPCError } from '@trpc/server';
-import { auth } from '@api/src/infrastructure/auth/auth';
+import { auth } from '@api/src/features/authentication/auth';
 import { getBaseUrl } from '@api/src/infrastructure/utils/request-url';
 
 // Set of procedure paths that have optional auth (e.g. @Public)
@@ -16,7 +16,7 @@ const SEP_THIN = '────────────────────�
 export class AuthGuardMiddleware implements TRPCMiddleware {
   constructor(
     @Inject(ConsoleLogger) private readonly logger: ConsoleLogger,
-  ) {}
+  ) { }
 
   async use(opts: MiddlewareOptions<{ req: any; res: any; optionalAuth?: boolean }>) {
     const { next, ctx, path, type } = opts;

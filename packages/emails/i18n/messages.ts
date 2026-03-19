@@ -12,6 +12,16 @@ export const messages: Record<EmailLocale, Record<string, string>> = {
       "Or copy and paste this link into your browser:",
     "auth.signup.footer":
       "If you didn't request this email, you can safely ignore it.",
+    "auth.reset.preview": "Reset your password",
+    "auth.reset.heading": "Reset your password",
+    "auth.reset.body.greeting": "Hi {name},",
+    "auth.reset.body.text":
+      "We received a request to reset your password. Use the button below to choose a new one.",
+    "auth.reset.cta": "Reset password",
+    "auth.reset.copy.label":
+      "Or copy and paste this link into your browser:",
+    "auth.reset.footer":
+      "If you did not request a password reset, you can ignore this email.",
   },
   fr: {
     "auth.signup.preview":
@@ -25,6 +35,16 @@ export const messages: Record<EmailLocale, Record<string, string>> = {
       "Ou copie-colle ce lien dans ton navigateur :",
     "auth.signup.footer":
       "Si tu n’as pas demandé cet e-mail, tu peux l’ignorer en toute sécurité.",
+    "auth.reset.preview": "Réinitialise ton mot de passe",
+    "auth.reset.heading": "Réinitialise ton mot de passe",
+    "auth.reset.body.greeting": "Salut {name},",
+    "auth.reset.body.text":
+      "Nous avons reçu une demande de réinitialisation. Utilise le bouton ci-dessous pour choisir un nouveau mot de passe.",
+    "auth.reset.cta": "Réinitialiser le mot de passe",
+    "auth.reset.copy.label":
+      "Ou copie-colle ce lien dans ton navigateur :",
+    "auth.reset.footer":
+      "Si tu n’as pas demandé cette réinitialisation, ignore simplement cet e-mail.",
   },
 };
 

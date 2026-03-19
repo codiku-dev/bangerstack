@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { signUp } from '@web/libs/auth-client';
+import { useTranslations } from 'next-intl';
+import { authClient } from '@web/libs/auth-client';
 import { Badge } from '@repo/ui/components/badge';
 import { Button } from '@repo/ui/components/button/button';
 import { Input } from '@repo/ui/components/input';
@@ -12,19 +13,17 @@ import { Label } from '@repo/ui/components/label';
 import { cn } from '@repo/ui/utils/cn';
 import { StyledTerminal } from '@web/app/examples/components/StyledTerminal';
 
-const signupSchema = z.object({
-  name: z.string().min(1),
+const requestResetSchema = z.object({
   email: z.string().email(),
-  password: z.string().min(6),
 });
 
-type SignupFormValues = z.infer<typeof signupSchema>;
+type RequestResetValues = z.infer<typeof requestResetSchema>;
 
-function SignupCodeBlock() {
+function RequestResetCodeBlock() {
   return (
     <StyledTerminal
-      title="apps/web/.../signup-form.tsx"
-      titleTitle="apps/web/app/to-delete/authentication/signup-form.tsx"
+      title="apps/web/.../reset-password-form.tsx"
+      titleTitle="apps/web/app/examples/authentication/reset-password-form.tsx"
       badge={<Badge size="sm">Client</Badge>}
       size="sm"
       fill
@@ -32,44 +31,47 @@ function SignupCodeBlock() {
       contentClassName="p-2 sm:p-4 overflow-auto min-w-0 flex-1 min-h-0"
       preClassName="leading-snug min-w-max"
     >
-      <span className="text-purple-400">await</span> signUp.email({'{\n'}
-      {'  '}name: <span className="text-blue-400">values.name</span>,{'\n'}
+      <span className="text-purple-400">await</span>{' '}
+      authClient.requestPasswordReset({'{\n'}
       {'  '}email: <span className="text-blue-400">values.email</span>,{'\n'}
-      {'  '}password: <span className="text-blue-400">values.password</span>,
-      {'\n'}
+      {'  '}redirectTo:{' '}
+      <span className="text-blue-400">
+        {`window.location.origin + '/examples/authentication/reset-password-callback'`}
+      </span>
+      ,{'\n'}
       <span className="text-gray-300">{'}'});</span>
     </StyledTerminal>
   );
 }
 
-export function SignupForm(p: {
+export function ResetPasswordForm(p: {
   className?: string;
   defaultEmail?: string;
-  defaultPassword?: string;
 }) {
+  const t = useTranslations('Landing.step8');
   const [result, setResult] = useState<unknown>(null);
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<SignupFormValues>({
-    resolver: zodResolver(signupSchema),
-    defaultValues: {
-      name: 'Demo User',
-      email: p.defaultEmail ?? '',
-      password: p.defaultPassword ?? 'password123',
-    },
+  } = useForm<RequestResetValues>({
+    resolver: zodResolver(requestResetSchema),
+    defaultValues: { email: p.defaultEmail ?? '' },
   });
 
-  const onSubmit = async (values: SignupFormValues) => {
+  const onSubmit = async (values: RequestResetValues) => {
     setResult(null);
-    const res = await signUp.email({
-      name: values.name,
-      email: values.email,
-      password: values.password,
-      callbackURL: process.env['NEXT_PUBLIC_GOOGLE_AUTH_CALLBACK_URL'],
-    });
-    setResult(res ?? null);
+    try {
+      const redirectTo = `${window.location.origin}/examples/authentication/reset-password-callback`;
+      const res = await authClient.requestPasswordReset({
+        email: values.email,
+        redirectTo,
+      });
+      setResult(res ?? null);
+    } catch (error) {
+      console.error(error);
+      setResult(error);
+    }
   };
 
   return (
@@ -80,36 +82,22 @@ export function SignupForm(p: {
       )}
     >
       <div className="min-w-0 h-full min-h-[280px] flex flex-col">
-        <SignupCodeBlock />
+        <RequestResetCodeBlock />
       </div>
       <div className="min-w-0 h-full flex flex-col bg-gray-900 rounded-lg overflow-hidden border border-gray-800 min-h-[280px]">
         <div className="bg-gray-800 px-3 sm:px-4 py-2 border-b border-gray-700 shrink-0">
-          <span className="text-xs font-medium text-gray-300">Demo</span>
+          <span className="text-xs font-medium text-gray-300">
+            {t('demoLabel')}
+          </span>
         </div>
         <div className="p-4 bg-white text-gray-900 flex-1 min-h-0 overflow-auto">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="signup-name" className="text-gray-900">
-                Name
+              <Label htmlFor="request-reset-email" className="text-gray-900">
+                {t('emailLabel')}
               </Label>
               <Input
-                id="signup-name"
-                type="text"
-                placeholder="Your name"
-                {...register('name')}
-              />
-              {errors.name && (
-                <p className="text-sm text-destructive">
-                  {errors.name.message}
-                </p>
-              )}
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="signup-email" className="text-gray-900">
-                Email
-              </Label>
-              <Input
-                id="signup-email"
+                id="request-reset-email"
                 type="email"
                 placeholder="you@example.com"
                 {...register('email')}
@@ -120,30 +108,19 @@ export function SignupForm(p: {
                 </p>
               )}
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="signup-password" className="text-gray-900">
-                Password
-              </Label>
-              <Input
-                id="signup-password"
-                type="text"
-                {...register('password')}
-              />
-              {errors.password && (
-                <p className="text-sm text-destructive">
-                  {errors.password.message}
-                </p>
-              )}
-            </div>
             <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Signing up…' : 'Sign up'}
+              {isSubmitting
+                ? t('resetRequestLoading')
+                : t('resetRequestSubmit')}
             </Button>
           </form>
         </div>
       </div>
       <div className="min-w-0 h-full flex flex-col bg-gray-900 rounded-lg overflow-hidden border border-gray-800 min-h-[280px]">
         <div className="bg-gray-800 px-3 sm:px-4 py-2 border-b border-gray-700 shrink-0">
-          <span className="text-xs font-medium text-gray-300">Réponse</span>
+          <span className="text-xs font-medium text-gray-300">
+            {t('responseLabel')}
+          </span>
         </div>
         <div className="p-4 bg-gray-900 flex-1 min-h-0 overflow-auto">
           <pre className="text-[10px] sm:text-xs font-mono text-gray-300 rounded bg-gray-800 p-3 overflow-x-auto min-h-[80px]">

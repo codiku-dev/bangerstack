@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dotenvx": "dotenvx",
-    "dev": "dotenvx run -f .env -- next dev --webpack --port 3000",
+    "dev": "dotenvx run -f .env.local.development -- next dev --webpack --port 3000",
     "build": "dotenvx run -f .env.production -- next build --webpack",
     "start": "dotenvx run -f .env.production -- next start",
     "start:prod": "dotenvx run -f .env.production -- next start",
