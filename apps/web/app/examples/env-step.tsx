@@ -189,12 +189,6 @@ export function EnvStep() {
             <p className="text-zinc-400 text-xs mt-3">{t10('ciHint')}</p>
           </div>
         </div>
-
-        <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3">
-          <p className="text-amber-200/90 text-sm font-medium">
-            {t10('ciOnlyKey')}
-          </p>
-        </div>
       </div>
     </div>
   );

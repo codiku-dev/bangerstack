@@ -27,6 +27,7 @@
       "autoDoc": "Auto documentation",
       "authentication": "Authentication",
       "logging": "Backend Network Logging",
+      "cleanEmails": "Clean emails",
       "encryptedSecrets": "Encrypted .env (dotenvx)"
     },
     "descriptions": {
@@ -39,6 +40,7 @@
       "autoDoc": "We use trpc-ui to expose your tRPC API. The documentation is generated automatically from your routers and Zod schemas.",
       "authentication": "Sign in, sign up and session management on the front-end with Better Auth.",
       "logging": "Use AuthGuardRouter with logs: true to get formatted request logs (URL, meta, response) in the terminal.",
+      "cleanEmails": "In this project, email templates are built with react-email (tailwind + intl support) inside the `packages/emails` workspace. You only create React components for your emails; the package exports the rendered output used by the API.",
       "encryptedSecrets": "Variables in .env.production are encrypted with dotenvx and can be safely committed. In CI, only set the private key from .env.keys."
     },
     "step1": {
@@ -144,6 +146,13 @@
       "keysComment": "Private decryption keys – backup with dotenvx ops backup",
       "ciHint": "In your CI (GitHub Actions, Vercel, etc.), set only this env var. dotenvx will decrypt .env.production at runtime.",
       "ciOnlyKey": "In CI: set DOTENV_PRIVATE_KEY_PRODUCTION (from .env.keys) as the only secret. No need to copy each variable."
+    },
+    "step11": {
+      "title": "Clean emails",
+      "reactEmailBadge": "react-email",
+      "screenshotAlt": "React email template example",
+      "explanation": "In `packages/emails`, templates use `Tailwind` for styling and the `t(...)` helper to fetch intl/i18n messages (by locale + key + values). You just create React components; the API imports the rendered result.",
+      "tailwindIntlHint": "Support: Tailwind for email styling + intl/i18n inside the templates via the `t(...)` helper."
     }
   },
   "I18nExample": {
