@@ -15,7 +15,7 @@ export function InternationalizationStep() {
       <StyledTerminal
         title="apps/web/.../my-component.tsx"
         titleTitle="apps/web/app/components/my-component.tsx"
-        badge={<Badge size="sm">{t('code')}</Badge>}
+        badge={<Badge >{t('code')}</Badge>}
       >
         <span className="text-gray-500">'use client'</span>
         <span className="text-gray-300">;</span>
@@ -69,7 +69,6 @@ export function InternationalizationStep() {
 
       <StyledTerminal
         title={t('result')}
-        badge={<Badge size="sm">{t('result')}</Badge>}
         variant="custom"
         contentClassName="p-6 bg-white h-full"
       >

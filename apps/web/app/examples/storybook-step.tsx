@@ -12,7 +12,7 @@ export function StorybookStep() {
     <div className="grid gap-8 lg:grid-cols-2">
       <StyledTerminal
         title="packages/ui/src/button/button.stories.tsx"
-        badge={<Badge size="sm">{t('uiPackageSide')}</Badge>}
+        badge={<Badge >{t('uiPackageSide')}</Badge>}
       >
         <span className="text-gray-500">import type</span>{' '}
         <span className="text-blue-400">

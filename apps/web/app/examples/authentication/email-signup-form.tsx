@@ -25,7 +25,7 @@ function SignupCodeBlock() {
     <StyledTerminal
       title="apps/web/.../signup-form.tsx"
       titleTitle="apps/web/app/to-delete/authentication/signup-form.tsx"
-      badge={<Badge size="sm">Client</Badge>}
+      badge={<Badge >Client</Badge>}
       size="sm"
       fill
       contentPadding="compact"

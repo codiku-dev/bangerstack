@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { useSession, signOut } from '@web/libs/auth-client';
 import { Badge } from '@repo/ui/components/badge';
 import { Button } from '@repo/ui/components/button/button';
@@ -23,7 +24,7 @@ function AccountCodeBlock() {
             apps/web/.../account-form.tsx
           </span>
         </div>
-        <Badge size="sm">Client</Badge>
+        <Badge >Client</Badge>
       </div>
       <div className="p-2 sm:p-4 overflow-auto min-w-0 flex-1 min-h-0">
         <pre className="text-[10px] sm:text-xs font-mono leading-snug text-gray-300 min-w-max">
@@ -41,6 +42,7 @@ function AccountCodeBlock() {
 }
 
 export function AccountForm(p: { className?: string }) {
+  const t = useTranslations('Landing.step8');
   const { data: session, isPending } = useSession();
 
   if (isPending) {
@@ -93,7 +95,7 @@ export function AccountForm(p: { className?: string }) {
           </div>
           <div className="p-4 bg-white text-gray-900 flex-1 min-h-0 overflow-auto">
             <p className="text-sm text-gray-600">
-              Not signed in. Sign in above to see your account.
+              {t('accountNotSignedIn')}
             </p>
           </div>
         </div>

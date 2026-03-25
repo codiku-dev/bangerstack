@@ -16,7 +16,7 @@ export function TypeSafetyStep() {
       <div className="grid gap-8 lg:grid-cols-2">
         <StyledTerminal
           title="apps/api/src/features/users/users.router.ts"
-          badge={<Badge size="sm">{t('backendSide')}</Badge>}
+          badge={<Badge >{t('backendSide')}</Badge>}
         >
           <span className="text-purple-400">@Router</span>
           <span className="text-gray-300">( </span>
@@ -63,7 +63,7 @@ export function TypeSafetyStep() {
 
         <StyledTerminal
           title="apps/web/app/page.tsx"
-          badge={<Badge size="sm">{t('frontendSide')}</Badge>}
+          badge={<Badge >{t('frontendSide')}</Badge>}
         >
           <span className="text-gray-500">'use client'</span>
           <span className="text-gray-300">;</span>
@@ -125,7 +125,7 @@ export function TypeSafetyStep() {
 
       <StyledTerminal
         title="Demo"
-        badge={<Badge size="sm">{t('result')}</Badge>}
+        badge={<Badge >{t('result')}</Badge>}
         variant="custom"
         contentClassName="p-6 bg-white"
       >

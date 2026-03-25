@@ -10,7 +10,7 @@
   "Landing": {
     "header": {
       "badge": "DX-first",
-      "headline": "Ship fullstack with joy",
+      "headline": "Build fullstack quickly and efficiently",
       "tagline": "Type-safe APIs, shared packages, auth & docs out of the box. Built for developer experience.",
       "stack": "Turbo · Nest · tRPC · Next · Bun"
     },
@@ -104,6 +104,7 @@
       "signinTitle": "Sign in",
       "googleSigninTitle": "Sign in with Google",
       "accountTitle": "Account",
+      "accountNotSignedIn": "Not signed in. Sign in above to view your account.",
       "authEventsTitle": "Authentication events",
       "resetPasswordTitle": "Reset password",
       "demoLabel": "Demo",
@@ -137,10 +138,10 @@
       "title": "Encrypted .env with dotenvx",
       "intro": "With dotenvx, your .env.production (and other env files) are automatically encrypted. You can safely push them to the repo—secrets are never stored in plain text.",
       "exampleTitle": "Example: .env.production (safe to commit)",
-      "encryptedBadge": "Encrypted",
+      "encryptedBadge": "Can be committed",
       "encryptedComment": "values can be committed",
       "ciTitle": "CI / production: the only secret",
-      "privateBadge": "Private – never commit",
+      "privateBadge": "Private – Never commit",
       "keysComment": "Private decryption keys – backup with dotenvx ops backup",
       "ciHint": "In your CI (GitHub Actions, Vercel, etc.), set only this env var. dotenvx will decrypt .env.production at runtime.",
       "ciOnlyKey": "In CI: set DOTENV_PRIVATE_KEY_PRODUCTION (from .env.keys) as the only secret. No need to copy each variable."
