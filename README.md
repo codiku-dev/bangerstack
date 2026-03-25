@@ -557,11 +557,6 @@ bun check-env:watch
 - Automatically loads  `.env.production`, or `.env` files
 - Runs in watch mode during `bun dev` to catch missing env vars early
 
-**Generate env types from existing `.env` files:**
-```bash
-bun generate-env-types
-```
-
 ---
 
 ## 📜 Available Commands
@@ -664,7 +659,6 @@ bun build-storybook
 │
 └── scripts/              # Utility scripts
     ├── check-env-all-apps.ts   # Validates process.env vs each app's env-type.ts zod
-    └── generate-env-types.ts
 ```
 
 ---
@@ -711,3 +705,20 @@ export type Env = z.infer<typeof envSchema>;
 ```
 
 The validator ensures all required variables are present before the app starts.
+
+## Env variable encryption
+
+The project uses Dotenvx to encrypt environment variables.
+
+This command will encrypt the .env.production file.
+
+```bash
+bun run encrypt-env
+```
+
+This command will decrypt the .env.production file.
+
+```bash
+bun run decrypt-env
+```
+

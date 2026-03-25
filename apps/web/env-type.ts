@@ -1,9 +1,9 @@
-/**
- * Generated from .env. Do not edit manually.
- * Regenerated when .env changes (generate-env-types script).
- */
-import { z } from "zod";
 
+import { z } from "zod";
+/**
+ * This will be used to validate the environment variables in the web app.
+ * You can edit this file manually to add or remove environment variables.
+ */
 export const envSchema = z.object({
   NEXT_PUBLIC_API_BASE_URL: z.string().optional(),
   NEXT_PUBLIC_GOOGLE_AUTH_CALLBACK_URL: z.string().optional(),

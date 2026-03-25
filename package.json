@@ -34,7 +34,6 @@
     "ui:dev:styles": "turbo run dev:styles --filter=@repo/ui",
     "ui:dev:components": "turbo run dev:components --filter=@repo/ui",
     "#---------------------------ENV---------------------------------#": "",
-    "generate-env-types": "bun run scripts/generate-env-types.ts",
     "check-env": "bun run scripts/check-env-all-apps.ts",
     "check-env:watch": "bun run scripts/check-env-all-apps.ts -- --watch",
     "encrypt-env": "npx dotenvx encrypt -f ./apps/*/.env.production",
