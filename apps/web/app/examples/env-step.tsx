@@ -184,8 +184,6 @@ export function EnvStep() {
             <p className="text-zinc-400 text-xs mt-3">{t10('ciHint')}</p>
           </div>
         </div>
-
-
       </div>
     </div>
   );
