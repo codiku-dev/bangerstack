@@ -35,7 +35,7 @@ function SigninCodeBlock() {
             apps/web/.../signin-form.tsx
           </span>
         </div>
-        <Badge size="sm">Client</Badge>
+        <Badge >Client</Badge>
       </div>
       <div className="p-2 sm:p-4 overflow-auto min-w-0 flex-1 min-h-0">
         <pre className="text-[10px] sm:text-xs font-mono leading-snug text-gray-300 min-w-max">

@@ -10,8 +10,8 @@
   "Landing": {
     "header": {
       "badge": "DX d'abord",
-      "headline": "Développez fullstack avec plaisir",
-      "tagline": "APIs type-safe, packages partagés, auth & doc inclus. Pensé pour l'expérience développeur.",
+      "headline": "Le monorepo fullstack tout-en-un",
+      "tagline": "Clean, DX-first, avec types, auth et doc inclus.",
       "stack": "Turbo · Nest · tRPC · Next · Bun"
     },
     "selectFeaturePrompt": "Choisis une catégorie ci-dessus pour voir les détails.",
@@ -106,6 +106,7 @@
       "signinTitle": "Connexion",
       "googleSigninTitle": "Connexion avec Google",
       "accountTitle": "Compte",
+      "accountNotSignedIn": "Non connecté. Connectez-vous ci-dessus pour voir votre compte.",
       "authEventsTitle": "Événements d’authentification",
       "resetPasswordTitle": "Réinitialiser le mot de passe",
       "demoLabel": "Démo",

@@ -17,7 +17,7 @@ export function EnvStep() {
           </h3>
           <StyledTerminal
             title="apps/api/env-type.ts"
-            badge={<Badge size="sm">{t4('zodSchemaBadge')}</Badge>}
+            badge={<Badge >{t4('zodSchemaBadge')}</Badge>}
             fill
           >
             <span className="text-purple-400">import</span>
@@ -52,9 +52,6 @@ export function EnvStep() {
             {t4('typedEnv')}
           </h3>
           <StyledTerminal
-            title="apps/api/src/main.ts"
-            badge={<Badge size="sm">{t4('typedEnvBadge')}</Badge>}
-            fill
           >
             <span className="text-gray-500">// ✨ {t4('typedVarLabel')}</span>
             {'\n'}
@@ -80,7 +77,7 @@ export function EnvStep() {
         <div className="grid gap-8 lg:grid-cols-2">
           <StyledTerminal
             title=".env"
-            badge={<Badge size="sm">{t4('envFile')}</Badge>}
+            badge={<Badge >{t4('envFile')}</Badge>}
             size="sm"
             contentPadding="compact"
           >
@@ -100,7 +97,6 @@ export function EnvStep() {
 
           <StyledTerminal
             title={t4('terminal')}
-            badge={<Badge size="sm">{t4('result')}</Badge>}
             size="sm"
             contentPadding="compact"
           >
@@ -134,7 +130,7 @@ export function EnvStep() {
           <div className="flex flex-col min-h-0">
             <StyledTerminal
               title=".env.production"
-              badge={<Badge size="sm">{t10('encryptedBadge')}</Badge>}
+              badge={<Badge >{t10('encryptedBadge')}</Badge>}
               fill
               contentPadding="compact"
             >
@@ -167,7 +163,6 @@ export function EnvStep() {
               title=".env.keys"
               badge={
                 <Badge
-                  size="sm"
                   className="border-red-500/40 bg-red-500/20 text-red-200"
                 >
                   {t10('privateBadge')}

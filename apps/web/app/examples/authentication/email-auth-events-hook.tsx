@@ -7,7 +7,7 @@ export function EmailAuthEventsHook() {
   return (
     <StyledTerminal
       title="apps/api/infrastructure/auth/hooks/signup-hook.ts"
-      badge={<Badge size="sm">API</Badge>}
+      badge={<Badge >API</Badge>}
     >
       <span className="text-emerald-400 border border-emerald-500/50 px-1 rounded text-[10px] sm:text-xs">
         Auth events hook — {t('description')}

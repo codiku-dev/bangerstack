@@ -15,16 +15,16 @@ const ROOT = process.cwd();
 const SKIP_DIRS = new Set(["node_modules", ".git"]);
 const ENV_FILES = [".env.production", ".env"] as const;
 
-function* walkDirs(dir: string): Generator<string> {
+function collectDirs(dir: string, out: string[]): void {
   try {
     for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
       if (!e.isDirectory() || SKIP_DIRS.has(e.name)) continue;
-      yield* walkDirs(path.join(dir, e.name));
+      collectDirs(path.join(dir, e.name), out);
     }
   } catch {
     return;
   }
-  yield dir;
+  out.push(dir);
 }
 
 function loadEnvInDir(dir: string): void {
@@ -38,7 +38,9 @@ function loadEnvInDir(dir: string): void {
 }
 
 (async () => {
-  for (const dir of walkDirs(ROOT)) {
+  const dirs: string[] = [];
+  collectDirs(ROOT, dirs);
+  for (const dir of dirs) {
     const envTypePath = path.join(dir, "env-type.ts");
     if (!fs.existsSync(envTypePath)) continue;
 
@@ -49,8 +51,13 @@ function loadEnvInDir(dir: string): void {
       mod.parseEnv();
     } catch (err: unknown) {
       const issues = (err as { issues?: Array<{ path?: (string | number)[] }> })?.issues;
+      const paths = issues
+        ? issues
+            .map((i) => i.path?.filter(Boolean).join("."))
+            .filter((s): s is string => Boolean(s))
+        : [];
       const vars = issues?.length
-        ? [...new Set(issues.map((i) => i.path?.filter(Boolean).join(".")).filter(Boolean))]
+        ? paths.filter((p, i) => paths.indexOf(p) === i)
         : ["?"];
       console.error("\n❌ Environment variables validation failed\n");
       console.error(`  App: ${appName}`);

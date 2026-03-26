@@ -13,7 +13,7 @@ export function ShareResourcesStep() {
       <div className="grid gap-8 lg:grid-cols-2">
         <StyledTerminal
           title="packages/ui/src/button/button.tsx"
-          badge={<Badge size="sm">{t('uiPackageSide')}</Badge>}
+          badge={<Badge>{t('uiPackageSide')}</Badge>}
         >
           <span className="text-purple-400">export function</span>{' '}
           <span className="text-yellow-400">Button</span>
@@ -42,7 +42,7 @@ export function ShareResourcesStep() {
 
         <StyledTerminal
           title="apps/web/app/page.tsx"
-          badge={<Badge size="sm">{t('nextjsSide')}</Badge>}
+          badge={<Badge >{t('nextjsSide')}</Badge>}
           size="sm"
           contentPadding="compact"
         >
@@ -75,8 +75,7 @@ export function ShareResourcesStep() {
       </div>
 
       <StyledTerminal
-        title="apps/web → import from @repo/ui"
-        badge={<Badge size="sm">{t('result')}</Badge>}
+        title=""
         variant="custom"
         contentClassName="p-6 bg-gray-900"
       >

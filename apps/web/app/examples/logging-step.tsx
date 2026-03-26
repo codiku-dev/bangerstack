@@ -12,7 +12,7 @@ export function LoggingStep() {
       <StyledTerminal
         title="apps/api/.../users.router.ts"
         titleTitle="apps/api/src/features/users/users.router.ts"
-        badge={<Badge size="sm">{t('codeLabel')}</Badge>}
+        badge={<Badge >{t('codeLabel')}</Badge>}
       >
         <span className="text-purple-400">@AuthGuard</span>
         <span className="text-gray-300">({' {'} alias: </span>
@@ -43,7 +43,7 @@ export function LoggingStep() {
 
       <StyledTerminal
         title="api:dev"
-        badge={<Badge size="sm">{t('terminalLabel')}</Badge>}
+        badge={<Badge >{t('terminalLabel')}</Badge>}
         size="sm"
         contentPadding="compact"
         preClassName="whitespace-pre"

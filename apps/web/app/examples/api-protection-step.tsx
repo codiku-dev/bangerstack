@@ -76,7 +76,7 @@ export function ApiProtetionStep() {
                 apps/api/src/app.router.ts
               </span>
             </div>
-            <Badge size="sm">{t('backendSide')}</Badge>
+            <Badge >{t('backendSide')}</Badge>
           </div>
           <div className="p-2 sm:p-4 overflow-x-auto overflow-y-auto max-h-[200px] sm:max-h-[280px] lg:max-h-none min-w-0">
             <pre className="text-[10px] sm:text-xs font-mono leading-snug text-gray-300 min-w-max">

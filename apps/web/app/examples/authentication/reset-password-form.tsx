@@ -24,7 +24,7 @@ function RequestResetCodeBlock() {
     <StyledTerminal
       title="apps/web/.../reset-password-form.tsx"
       titleTitle="apps/web/app/examples/authentication/reset-password-form.tsx"
-      badge={<Badge size="sm">Client</Badge>}
+      badge={<Badge >Client</Badge>}
       size="sm"
       fill
       contentPadding="compact"

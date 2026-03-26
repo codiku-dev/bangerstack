@@ -1,6 +1,5 @@
 /**
- * Generated from .env.local.development. 
- * Regenerated when .env.local.development changes (generate-env-types script).
+ * Generated from .env.production. 
  */
 import { config } from "@dotenvx/dotenvx";
 import { z } from "zod";
