@@ -1,13 +1,13 @@
 import { Providers } from '@web/providers';
-import '../assets/globals.css';
+import '../styles/globals.css';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { Geist } from "next/font/google";
-import { cn } from "#/lib/utils";
+import { cn } from "#/utils/css-utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
 const geistSans = localFont({
   src: '../assets/fonts/GeistVF.woff',

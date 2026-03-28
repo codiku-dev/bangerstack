@@ -16,6 +16,7 @@ export const envSchema = z.object({
   AUTH_GOOGLE_CLIENT_ID: z.string(),
   AUTH_GOOGLE_CLIENT_SECRET: z.string(),
   FRONTEND_URL: z.string(),
+  MOBILE_URL: z.string(),
   BETTER_AUTH_URL: z.string(),
   //EMAIL
   EMAIL_SMTP_PASSWORD: z.string(),

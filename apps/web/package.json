@@ -5,7 +5,9 @@
   "private": true,
   "scripts": {
     "dotenvx": "dotenvx",
-    "dev": "npx dotenvx run -f .env.local.development -- next dev --webpack --port 3000",
+    "dev": "npx turbo run build --filter=@repo/emails && concurrently -n styles,components,check,next --kill-others-on-fail \"npx turbo run dev:styles --filter=@repo/ui\" \"npx turbo run dev:components --filter=@repo/ui\" \"npm run check-env:watch\" \"npm run dev:web\"",
+    "check-env:watch": "cd ../.. && npm run check-env:watch",
+    "dev:web": "npx dotenvx run -f .env.local.development -- next dev",
     "build": "npx dotenvx run -f .env.production -- next build --webpack",
     "start": "npx dotenvx run -f .env.production -- next start",
     "start:prod": "npx dotenvx run -f .env.production -- next start",

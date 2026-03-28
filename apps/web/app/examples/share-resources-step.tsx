@@ -80,8 +80,9 @@ export function ShareResourcesStep() {
         contentClassName="p-6 bg-gray-900"
       >
         <p className="text-xs text-gray-400 mb-4">{t('resultLabel')}</p>
-        <Button>{t('buttonLabel')}</Button>
+
       </StyledTerminal>
+      <Button>{t('buttonLabel')}</Button>
     </div>
   );
 }
