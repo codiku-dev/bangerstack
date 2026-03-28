@@ -3,10 +3,8 @@ import { ValidationPipe } from '@nestjs/common';
 
 import { AppModule } from '@api/src/app.module';
 import { PrismaExceptionFilter } from '@api/src/infrastructure/prisma/prisma-exception.filter';
-import { parseEnv } from '@api/env-type';
+import { parseEnv, type Env } from '@api/env-type';
 import { env } from 'node:process';
-
-
 
 function checkEnvVariablesAgaintZodSchema() {
   try {
@@ -24,18 +22,17 @@ function checkEnvVariablesAgaintZodSchema() {
     process.exit(1);
   }
 }
+
 async function bootstrap() {
-
   checkEnvVariablesAgaintZodSchema();
-
-
 
   const app = await NestFactory.create(AppModule, {
     bodyParser: false,
     cors: {
-      origin: [process.env.FRONTEND_URL, process.env.MOBILE_URL],
+      // origin: [process.env.FRONTEND_URL as string, process.env.MOBILE_URL_WEB as string, process.env.MOBILE_URL_EMULATOR as string, "192.168.1.224", "http://192.168.1.224:3001"],
+      // credentials: true,
+      origin: "*",
       credentials: true,
-
     },
   });
   app.useGlobalPipes(new ValidationPipe());

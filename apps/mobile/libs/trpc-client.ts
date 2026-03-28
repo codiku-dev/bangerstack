@@ -12,6 +12,7 @@ export const queryClient = new QueryClient({
   },
 });
 
+
 export const trpcClient = trpc.createClient({
 
   links: [

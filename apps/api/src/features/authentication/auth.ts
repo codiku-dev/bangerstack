@@ -75,6 +75,6 @@ export const auth = betterAuth({
             });
         },
     },
-    trustedOrigins: [process.env.FRONTEND_URL],
+    trustedOrigins: [process.env.FRONTEND_URL as string, process.env.MOBILE_URL_WEB as string, process.env.MOBILE_URL_EMULATOR as string],
 
 });

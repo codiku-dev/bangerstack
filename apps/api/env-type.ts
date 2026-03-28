@@ -15,8 +15,13 @@ export const envSchema = z.object({
   BETTER_AUTH_SECRET: z.string(),
   AUTH_GOOGLE_CLIENT_ID: z.string(),
   AUTH_GOOGLE_CLIENT_SECRET: z.string(),
-  FRONTEND_URL: z.string(),
-  MOBILE_URL: z.string(),
+  FRONTEND_URL: z.string().optional(),
+  /** Next mobile depuis le navigateur sur le PC (souvent localhost:3001). */
+  MOBILE_URL_WEB: z.string().optional(),
+  /** Next mobile chargé depuis l’émulateur (souvent 10.0.2.2:3001). */
+  MOBILE_URL_EMULATOR: z.string().optional(),
+  /** Next mobile sur le LAN (ex. http://192.168.x.x:3001) — doit matcher l’`Origin` réelle. */
+  MOBILE_URL_LAN: z.string().optional(),
   BETTER_AUTH_URL: z.string(),
   //EMAIL
   EMAIL_SMTP_PASSWORD: z.string(),

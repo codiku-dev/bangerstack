@@ -5,7 +5,7 @@ import { queryClient, trpcClient, trpc } from "@mobile/libs/trpc-client";
 export function TrpcProvider({ children }: PropsWithChildren) {
   return (
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      {children}
     </trpc.Provider>
   );
 }

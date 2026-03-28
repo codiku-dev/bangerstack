@@ -2,7 +2,7 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { config as loadEnv } from "@dotenvx/dotenvx";
-import { getAllowedCapDevOrigins } from "./lib/dev-server-origin";
+import { getAllowedCapDevOrigins } from "./libs/dev-server-origin";
 
 const dir = path.dirname(fileURLToPath(import.meta.url));
 if (process.env.NODE_ENV === "development") {
