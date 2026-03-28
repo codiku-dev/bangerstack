@@ -1,7 +1,10 @@
 import type { CapacitorConfig } from "@capacitor/cli";
+import { getCapacitorDevServerUrl } from "./lib/dev-server-origin";
 
+/** Origine du dev server (souvent `http://<LAN_HOST>:3001` depuis `dev-server-origin`). */
+const devServerUrl = getCapacitorDevServerUrl();
 
-
+console.log("devServerUrl", devServerUrl);
 const config: CapacitorConfig = {
   appId: "com.bangerstack.mobile",
   appName: "BangerStack",
@@ -9,10 +12,14 @@ const config: CapacitorConfig = {
   android: {
     allowMixedContent: true,
   },
-  server: {
-    url: "http://127.0.0.1:3001",
-    cleartext: true,
-  },
+  ...(devServerUrl
+    ? {
+      server: {
+        url: devServerUrl,
+        cleartext: true,
+      },
+    }
+    : {}),
 };
 
 export default config;
