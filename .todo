@@ -2,3 +2,6 @@
 - Deployment mobile
 - Trpc mobile
 - Env management mobile
+- verifier auth coté mobile
+- Voir pour les logs coté emulator
+- Voir pour le network logging coté emulator
