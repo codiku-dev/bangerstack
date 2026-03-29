@@ -7,6 +7,13 @@ const config: CapacitorConfig = {
   appId: "com.bangerstack.mobile",
   appName: "BangerStack",
   webDir: "out",
+  plugins: {
+    /** Works with `viewportFit: 'cover'` so the WebView parent is not padded like the status bar is still there. */
+    SystemBars: {
+      hidden: true,
+      insetsHandling: "disable",
+    },
+  },
   android: {
     allowMixedContent: true,
   },

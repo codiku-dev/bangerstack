@@ -14,6 +14,7 @@ import { AuthStep } from "@/app/examples/authentication/auth-step";
 import { AutoDocStep } from "@/app/examples/auto-doc-step";
 import { LoggingStep } from "@/app/examples/logging-step";
 import { CleanEmailsStep } from "@/app/examples/clean-emails-step";
+import { Clipboard } from '@capacitor/clipboard';
 
 const CREATE_CMD = "npx create-bangerstack@latest";
 
@@ -56,8 +57,10 @@ export default function Landing() {
   >(1);
   const [copied, setCopied] = useState(false);
 
-  const copyCreateCmd = useCallback(() => {
-    void navigator.clipboard.writeText(CREATE_CMD).then(() => {
+  const copyCreateCmd = useCallback(async () => {
+    Clipboard.write({
+      string: CREATE_CMD
+    }).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     });
@@ -138,11 +141,10 @@ export default function Landing() {
                 type="button"
                 onClick={() => selectStep(step.num)}
                 aria-current={isActive ? "step" : undefined}
-                className={`flex items-center gap-2 px-3 py-3 rounded-xl text-left min-w-0 transition-colors ${
-                  isActive
-                    ? "bg-violet-500/20 text-white border border-violet-500/40"
-                    : "bg-white/5 text-zinc-400 hover:bg-white/10 border border-white/10"
-                }`}
+                className={`flex items-center gap-2 px-3 py-3 rounded-xl text-left min-w-0 transition-colors ${isActive
+                  ? "bg-violet-500/20 text-white border border-violet-500/40"
+                  : "bg-white/5 text-zinc-400 hover:bg-white/10 border border-white/10"
+                  }`}
               >
                 <span className="text-lg shrink-0" aria-hidden>
                   {step.emoji}

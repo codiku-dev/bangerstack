@@ -16,13 +16,17 @@
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit",
     "cap": "capacitor",
-    "cap:sync": "npx @capacitor/cli sync",
-    "cap:copy": "npx @capacitor/cli copy"
+    "sync": "npx @capacitor/cli sync",
+    "cap:copy": "npx @capacitor/cli copy",
+    "postinstall": "npm bun run cap sync"
   },
   "dependencies": {
+    "@boengli/capacitor-fullscreen": "^0.0.19",
     "@capacitor/android": "8.3.0",
     "@capacitor/cli": "8.3.0",
+    "@capacitor/clipboard": "^8.0.1",
     "@capacitor/core": "8.3.0",
+    "@capacitor/ios": "^8.3.0",
     "@hookform/resolvers": "^5.0.0",
     "@radix-ui/react-slot": "^1.2.2",
     "@repo/emails": "*",
