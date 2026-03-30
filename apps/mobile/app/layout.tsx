@@ -1,8 +1,9 @@
-import { Providers } from "@/providers";
 import "@/styles/globals.css";
 import type { Viewport } from "next";
-import { NativeChrome } from "@/app/native-chrome";
+import { Providers } from "@/providers";
+import { SafeArea } from "@/ui/safe-area";
 
+// FULL SCREEN MODE (requires reload)
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -11,10 +12,9 @@ export const viewport: Viewport = {
 
 export default function RootLayout(p: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body className="antialiased min-h-dvh">
-        <NativeChrome />
-        <Providers>{p.children}</Providers>
+        <Providers> {p.children}</Providers>
       </body>
     </html>
   );

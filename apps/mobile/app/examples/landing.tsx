@@ -15,6 +15,7 @@ import { AutoDocStep } from "@/app/examples/auto-doc-step";
 import { LoggingStep } from "@/app/examples/logging-step";
 import { CleanEmailsStep } from "@/app/examples/clean-emails-step";
 import { Clipboard } from '@capacitor/clipboard';
+import { SafeArea } from "@/ui/safe-area";
 
 const CREATE_CMD = "npx create-bangerstack@latest";
 
@@ -85,11 +86,12 @@ export default function Landing() {
     { num: 9 as const, emoji: "📋", labelKey: "logging" as const },
     { num: 10 as const, emoji: "📧", labelKey: "cleanEmails" as const },
   ];
-
+  //
   return (
-    <div className="min-h-dvh bg-[#0a0a0b] text-zinc-100 pb-16">
+    <SafeArea className="min-h-dvh bg-[#0a0a0b] text-zinc-100 pb-16">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(99,102,241,0.25),transparent)]" />
       <header className="relative overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(99,102,241,0.25),transparent)]" />
+
         <div className="relative max-w-5xl mx-auto px-4 pt-6 pb-12">
           <div className="flex items-center gap-3 mb-6">
             <BangerStackLogo className="h-9 w-9 shrink-0 rounded-lg shadow-lg shadow-violet-500/20" />
@@ -199,6 +201,6 @@ export default function Landing() {
           </div>
         </div>
       </div>
-    </div>
+    </SafeArea>
   );
 }

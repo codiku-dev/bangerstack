@@ -33,6 +33,7 @@
     "@repo/trpc": "*",
     "@repo/ui": "*",
     "better-auth": "^1.4.18",
+    "capacitor-plugin-safe-area": "^5.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.7.0",
@@ -44,6 +45,7 @@
     "react-hook-form": "^7.56.4",
     "shadcn": "^4.1.1",
     "tailwind-merge": "^3.5.0",
+    "use-async-effect": "^2.2.7",
     "zod": "^3.25.5"
   },
   "devDependencies": {
