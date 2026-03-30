@@ -113,6 +113,51 @@ When it works, **Devices** lists the emulator and the WebView with the dev URL (
 | `capacitor.config.ts` | Capacitor app id, `server.url` in dev, cleartext |
 | `libs/dev-server-origin.ts` | Dev origin / port / emulator URL mode |
 
+## Fullscreen viewport (WebView)
+
+In `apps/mobile/app/layout.tsx`, the `viewport` export enables a fullscreen experience for the WebView.
+
+```ts
+// FULL SCREEN MODE (requires reload)
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+```
+
+`viewportFit: "cover"` tells the browser to extend the layout into the full screen area (including safe areas around notches / system overlays). After changing this value, expect to reload the app.
+
+## `<SafeArea />` component
+
+`<SafeArea />` (in `apps/mobile/ui/safe-area.tsx`) uses `capacitor-plugin-safe-area` to read the current safe-area insets and applies them as padding.
+
+### Why you use it
+
+- Prevents content from being covered by notches / rounded corners / system UI.
+- Automatically keeps padding in sync with the device safe area.
+
+### Usage
+
+```tsx
+import { SafeArea } from "@/ui/safe-area";
+
+export function Screen() {
+  return (
+    <SafeArea className="min-h-dvh bg-black text-white">
+      <h1>Hello</h1>
+    </SafeArea>
+  );
+}
+```
+
+### Props
+
+- `onReady?: () => void`: called after the safe-area insets are fetched.
+- Any standard `div` props (for example `className`, `style`, etc.) are forwarded.
+
+This component relies on React Query to fetch the insets, and the mobile app wraps your tree with `Providers` (includes `ReactQueryProvider`).
+
 ## Further reading
 
 - [Capacitor Android documentation](https://capacitorjs.com/docs/android)

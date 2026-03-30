@@ -6,8 +6,8 @@
   "scripts": {
     "dotenvx": "dotenvx",
     "dev": "npx turbo run build --filter=@repo/emails && concurrently -n styles,components,check,next --kill-others-on-fail \"npx turbo run dev:styles --filter=@repo/ui\" \"npx turbo run dev:components --filter=@repo/ui\" \"npm run check-env:watch\" \"npm run dev:web\"",
-    "dev:web": "npx dotenvx run -f .env.local.development -- next dev --port 3001 -H 0.0.0.0 --webpack",
-    "dev:android": "npx dotenvx run -f .env.local.development -- npm run cap run android --live-reload --port 3001",
+    "dev:web": "npx dotenvx run -f .env.local.production -- next dev --port 3001 -H 0.0.0.0 --webpack",
+    "android": "npm run cap run android --live-reload --port 3001",
     "check-env:watch": "cd ../.. && npm run check-env:watch",
     "build": "npx dotenvx run -f .env.production -- next build --webpack",
     "postbuild": "npx @capacitor/cli copy",

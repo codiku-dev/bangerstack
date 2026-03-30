@@ -1,7 +1,6 @@
 import "@/styles/globals.css";
 import type { Viewport } from "next";
 import { Providers } from "@/providers";
-import { SafeArea } from "@/ui/safe-area";
 
 // FULL SCREEN MODE (requires reload)
 export const viewport: Viewport = {

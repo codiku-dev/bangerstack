@@ -18,6 +18,13 @@
         "DOTENV_PRIVATE_KEY_PRODUCTION"
       ]
     },
+    "prod:web": {
+      "cache": false,
+      "persistent": true,
+      "env": [
+        "DOTENV_PRIVATE_KEY_PRODUCTION"
+      ]
+    },
     "check-env:watch": {
       "cache": false,
       "persistent": true,
