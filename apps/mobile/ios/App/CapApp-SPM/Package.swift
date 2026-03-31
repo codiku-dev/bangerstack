@@ -12,8 +12,8 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/ionic-team/capacitor-swift-pm.git", exact: "8.3.0"),
-        .package(name: "CapacitorClipboard", path: "..\..\..\..\..\node_modules\@capacitor\clipboard"),
-        .package(name: "CapacitorPluginSafeArea", path: "..\..\..\..\..\node_modules\capacitor-plugin-safe-area")
+        .package(name: "CapacitorClipboard", path: "../../../../../node_modules/@capacitor/clipboard"),
+        .package(name: "CapacitorPluginSafeArea", path: "../../../../../node_modules/capacitor-plugin-safe-area")
     ],
     targets: [
         .target(

@@ -1,5 +1,9 @@
-import Landing from "@/app/examples/landing";
+import Landing from '@/app/examples/landing';
 
 export default function Home() {
-  return <> <Landing /></>
+  return (
+    <>
+      <Landing />
+    </>
+  );
 }

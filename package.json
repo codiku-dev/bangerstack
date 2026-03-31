@@ -17,6 +17,7 @@
     "dev:api": "turbo run dev --filter=api...",
     "dev:ui": "turbo run dev --filter=@repo/ui...",
     "dev:mobile:android": "cd apps/mobile && bun run android",
+    "dev:mobile:ios": "cd apps/mobile && bun run ios",
     "#--------------------------TESTING------------------------------#": "",
     "test": "turbo run test",
     "test:e2e": "turbo run test:e2e",
