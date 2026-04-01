@@ -63,6 +63,24 @@ Capacitor live reload docs: [Live reload](https://capacitorjs.com/docs/guides/li
 - **`bun run build`** produces the Next output and copies it into native projects.
 - **`bun run start`** / **`start:prod`** serve the **`out/`** folder locally on port **3001** (useful for smoke tests).
 
+### Android release keystore (Play Store)
+
+Google Play requires a **signed** release bundle. Create an **upload keystore** once, from **`apps/mobile/android/`**:
+
+```bash
+cd android
+keytool -genkey -v -keystore upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+```
+
+Then:
+
+1. Copy **`keystore.properties.example`** to **`keystore.properties`** in the same `android/` folder (this file is gitignored).
+2. Set **`storeFile`**, **`keyAlias`**, **`storePassword`**, and **`keyPassword`** to match what you chose in `keytool`.
+
+See Gradle **`android/app/build.gradle`** (`signingConfigs.release`) for how those values are read.
+
+Useful scripts from **`apps/mobile`**: **`bun run build:android`** (signed AAB + copy to `app-release.aab`), **`bun run release:playstore`** (build + upload via fastlane, when configured).
+
 ## Lint and types
 
 ```bash
