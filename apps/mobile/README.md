@@ -81,6 +81,8 @@ See Gradle **`android/app/build.gradle`** (`signingConfigs.release`) for how tho
 
 Useful scripts from **`apps/mobile`**: **`bun run build:android`** (signed AAB + copy to `app-release.aab`), **`bun run release:playstore`** (build + upload via fastlane, when configured).
 
+**`release:playstore`** envoie l’AAB avec **`release_status: completed`** par défaut : la version est **publiée sur la piste** (`PLAY_TRACK`, défaut `internal`) sans passer par un brouillon de release. Si Google renvoie une erreur « draft app », utilise **`PLAY_RELEASE_STATUS=draft`** jusqu’à ce que l’app soit sortie du brouillon. Si **Publication gérée** est activée dans Play Console, une étape de **révision** peut quand même être nécessaire côté console.
+
 ### Android versionCode / versionName (Play Store)
 
 Each Play upload needs a **new `versionCode`** (integer, strictly increasing). The repo uses **`android/version.properties`** (committed) plus an automatic bump:

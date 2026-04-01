@@ -137,14 +137,15 @@ async function main() {
       : inferPackageName({ mobileDir, androidDir });
   const track = process.env["PLAY_TRACK"] ?? "internal";
   /**
-   * Tant que l’app est une « draft app » (première config Play incomplète), l’API n’accepte que
-   * `release_status: draft`. Ensuite : `PLAY_RELEASE_STATUS=completed` pour publier directement sur la piste.
+   * `completed` = la release est publiée sur la piste (test interne, production, etc.) sans action manuelle
+   * dans la console pour le statut de la release.
+   * Si l’API répond que l’app est encore une « draft app », utiliser `PLAY_RELEASE_STATUS=draft` puis valider une fois dans Play Console.
    */
   const fromEnvPlayRelease = process.env["PLAY_RELEASE_STATUS"]?.trim();
   const releaseStatus =
     fromEnvPlayRelease && fromEnvPlayRelease !== ""
       ? fromEnvPlayRelease
-      : "draft";
+      : "completed";
   const aabPath = resolve(
     androidDir,
     "app/build/outputs/bundle/release/app-release.aab",
@@ -155,7 +156,7 @@ async function main() {
   }
 
   console.log(
-    `Play upload: track=${track}, release_status=${releaseStatus} (use PLAY_RELEASE_STATUS=completed after the app is no longer a draft in Play Console)`,
+    `Play upload: track=${track}, release_status=${releaseStatus}${releaseStatus === "draft" ? "" : " (publication automatique sur la piste)"}. Si erreur « draft app », définir PLAY_RELEASE_STATUS=draft.`,
   );
 
   const steps: Step[] = [
@@ -200,9 +201,12 @@ async function main() {
     }
   }
 
-  console.log("\n✅ Android release uploaded successfully.");
+  console.log("\n✅ Android release publiée sur Google Play.");
   console.log(`Track: ${track}`);
   console.log(`Package: ${packageName}`);
+  console.log(
+    `Statut release: ${releaseStatus} — si la console a « Publication gérée » activée, une validation manuelle peut encore être requise dans Play Console.`,
+  );
 }
 
 main().catch((error: unknown) => {

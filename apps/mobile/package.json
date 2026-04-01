@@ -23,7 +23,7 @@
     "cap": "capacitor",
     "sync": "npm run cap:prepare-assets && npx @capacitor/cli sync",
     "cap:copy": "npm run cap:prepare-assets && npx @capacitor/cli copy",
-    "postinstall": "npm run cap:prepare-assets && npm run cap sync"
+    "prepare:assets": "npm run cap:prepare-assets && npm run cap sync"
   },
   "dependencies": {
     "@boengli/capacitor-fullscreen": "^0.0.19",
