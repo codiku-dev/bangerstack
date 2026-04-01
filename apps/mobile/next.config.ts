@@ -12,8 +12,15 @@ if (process.env.NODE_ENV === "development") {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /** Hôtes autorisés pour HMR / `/_next/*` en dev (`localhost` vs `127.0.0.1` = origines différentes). */
-  allowedDevOrigins: getAllowedCapDevOrigins(),
+  /** Export statique → dossier `out/` pour Capacitor (`webDir: "out"`) quand `server.url` est absent en prod. */
+  output: "export",
+  images: {
+    unoptimized: true,
+  },
+  /** Uniquement en dev : évite d’exécuter la résolution LAN pendant `next build` (export statique). */
+  ...(process.env["NODE_ENV"] === "development"
+    ? { allowedDevOrigins: getAllowedCapDevOrigins() }
+    : {}),
   transpilePackages: ["@repo/ui"],
 };
 

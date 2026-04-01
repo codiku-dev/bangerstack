@@ -1,23 +1,23 @@
-"use client";
+'use client';
 
-import { useCallback, useState } from "react";
-import { useTranslations } from "next-intl";
-import { Copy, Check } from "lucide-react";
-import { Badge } from "@repo/ui/components/badge";
-import { TypeSafetyStep } from "@/app/examples/type-safety-step";
-import { ShareResourcesStep } from "@/app/examples/share-resources-step";
-import { StorybookStep } from "@/app/examples/storybook-step";
-import { EnvStep } from "@/app/examples/env-step";
-import { InternationalizationStep } from "@/app/examples/internationalization-step";
-import { ApiProtetionStep } from "@/app/examples/api-protection-step";
-import { AuthStep } from "@/app/examples/authentication/auth-step";
-import { AutoDocStep } from "@/app/examples/auto-doc-step";
-import { LoggingStep } from "@/app/examples/logging-step";
-import { CleanEmailsStep } from "@/app/examples/clean-emails-step";
+import { useCallback, useState } from 'react';
+import { useTranslations } from 'next-intl';
+import { Copy, Check } from 'lucide-react';
+import { Badge } from '@repo/ui/components/badge';
+import { TypeSafetyStep } from '@/app/examples/type-safety-step';
+import { ShareResourcesStep } from '@/app/examples/share-resources-step';
+import { StorybookStep } from '@/app/examples/storybook-step';
+import { EnvStep } from '@/app/examples/env-step';
+import { InternationalizationStep } from '@/app/examples/internationalization-step';
+import { ApiProtetionStep } from '@/app/examples/api-protection-step';
+import { AuthStep } from '@/app/examples/authentication/auth-step';
+import { AutoDocStep } from '@/app/examples/auto-doc-step';
+import { LoggingStep } from '@/app/examples/logging-step';
+import { CleanEmailsStep } from '@/app/examples/clean-emails-step';
 import { Clipboard } from '@capacitor/clipboard';
-import { SafeArea } from "@/ui/safe-area";
+import { SafeArea } from '@/ui/safe-area';
 
-const CREATE_CMD = "npx create-bangerstack@latest";
+const CREATE_CMD = 'npx create-bangerstack@latest';
 
 function BangerStackLogo(p: { className?: string }) {
   return (
@@ -52,7 +52,7 @@ function BangerStackLogo(p: { className?: string }) {
 }
 
 export default function Landing() {
-  const t = useTranslations("Landing");
+  const t = useTranslations('Landing');
   const [activeStep, setActiveStep] = useState<
     1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
   >(1);
@@ -60,7 +60,7 @@ export default function Landing() {
 
   const copyCreateCmd = useCallback(async () => {
     Clipboard.write({
-      string: CREATE_CMD
+      string: CREATE_CMD,
     }).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -75,23 +75,22 @@ export default function Landing() {
   );
 
   const steps = [
-    { num: 1 as const, emoji: "🛡️", labelKey: "fullstackTypeSafety" as const },
-    { num: 2 as const, emoji: "📦", labelKey: "shareResources" as const },
-    { num: 3 as const, emoji: "📚", labelKey: "storybook" as const },
-    { num: 4 as const, emoji: "🔐", labelKey: "typedEnv" as const },
-    { num: 5 as const, emoji: "🌍", labelKey: "internationalisation" as const },
-    { num: 6 as const, emoji: "🔒", labelKey: "apiProtection" as const },
-    { num: 7 as const, emoji: "📄", labelKey: "autoDoc" as const },
-    { num: 8 as const, emoji: "🔑", labelKey: "authentication" as const },
-    { num: 9 as const, emoji: "📋", labelKey: "logging" as const },
-    { num: 10 as const, emoji: "📧", labelKey: "cleanEmails" as const },
+    { num: 1 as const, emoji: '🛡️', labelKey: 'fullstackTypeSafety' as const },
+    { num: 2 as const, emoji: '📦', labelKey: 'shareResources' as const },
+    { num: 3 as const, emoji: '📚', labelKey: 'storybook' as const },
+    { num: 4 as const, emoji: '🔐', labelKey: 'typedEnv' as const },
+    { num: 5 as const, emoji: '🌍', labelKey: 'internationalisation' as const },
+    { num: 6 as const, emoji: '🔒', labelKey: 'apiProtection' as const },
+    { num: 7 as const, emoji: '📄', labelKey: 'autoDoc' as const },
+    { num: 8 as const, emoji: '🔑', labelKey: 'authentication' as const },
+    { num: 9 as const, emoji: '📋', labelKey: 'logging' as const },
+    { num: 10 as const, emoji: '📧', labelKey: 'cleanEmails' as const },
   ];
   //
   return (
     <SafeArea className="min-h-dvh bg-[#0a0a0b] text-zinc-100 pb-16">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(99,102,241,0.25),transparent)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_20%,rgba(99,102,241,0.25),transparent)] h-44" />
       <header className="relative overflow-hidden border-b border-white/10">
-
         <div className="relative max-w-5xl mx-auto px-4 pt-6 pb-12">
           <div className="flex items-center gap-3 mb-6">
             <BangerStackLogo className="h-9 w-9 shrink-0 rounded-lg shadow-lg shadow-violet-500/20" />
@@ -103,29 +102,34 @@ export default function Landing() {
             </span>
           </div>
           <p className="inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-3 py-1.5 text-xs font-medium text-violet-300 mb-6">
-            {t("header.badge")}
+            {t('header.badge')}
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-3 max-w-2xl">
-            {t("header.headline")}
+            {t('header.headline')}
           </h1>
           <p className="text-base text-zinc-400 max-w-xl mb-6 leading-relaxed">
-            {t("header.tagline")}
+            {t('header.tagline')}
           </p>
           <button
             type="button"
             onClick={copyCreateCmd}
             className="inline-flex items-center gap-2 rounded-lg border border-zinc-700 bg-zinc-800/90 px-3 py-2 text-sm font-mono text-zinc-300 hover:bg-zinc-700/80"
           >
-            <span className="truncate max-w-[min(100%,280px)]">{CREATE_CMD}</span>
+            <span className="truncate max-w-[min(100%,280px)]">
+              {CREATE_CMD}
+            </span>
             {copied ? (
-              <Check className="h-4 w-4 shrink-0 text-emerald-400" aria-hidden />
+              <Check
+                className="h-4 w-4 shrink-0 text-emerald-400"
+                aria-hidden
+              />
             ) : (
               <Copy className="h-4 w-4 shrink-0" aria-hidden />
             )}
           </button>
           <div className="flex flex-wrap gap-2 mt-6 text-sm">
-            {t("header.stack")
-              .split(" · ")
+            {t('header.stack')
+              .split(' · ')
               .map((tech) => (
                 <Badge key={tech}>{tech}</Badge>
               ))}
@@ -142,11 +146,12 @@ export default function Landing() {
                 key={step.num}
                 type="button"
                 onClick={() => selectStep(step.num)}
-                aria-current={isActive ? "step" : undefined}
-                className={`flex items-center gap-2 px-3 py-3 rounded-xl text-left min-w-0 transition-colors ${isActive
-                  ? "bg-violet-500/20 text-white border border-violet-500/40"
-                  : "bg-white/5 text-zinc-400 hover:bg-white/10 border border-white/10"
-                  }`}
+                aria-current={isActive ? 'step' : undefined}
+                className={`flex items-center gap-2 px-3 py-3 rounded-xl text-left min-w-0 transition-colors ${
+                  isActive
+                    ? 'bg-violet-500/20 text-white border border-violet-500/40'
+                    : 'bg-white/5 text-zinc-400 hover:bg-white/10 border border-white/10'
+                }`}
               >
                 <span className="text-lg shrink-0" aria-hidden>
                   {step.emoji}
@@ -162,28 +167,28 @@ export default function Landing() {
         <div className="space-y-4">
           <div>
             <h2 className="text-xl font-bold mb-1 text-white">
-              {activeStep === 1 && `🛡️ ${t("step1.title")}`}
-              {activeStep === 2 && `📦 ${t("step2.title")}`}
-              {activeStep === 3 && `📚 ${t("step3.title")}`}
-              {activeStep === 4 && `🔐 ${t("step4.title")}`}
-              {activeStep === 5 && `🌍 ${t("step5.title")}`}
-              {activeStep === 6 && `🔒 ${t("step6.title")}`}
-              {activeStep === 7 && `📄 ${t("step7.title")}`}
-              {activeStep === 8 && `🔑 ${t("step8.title")}`}
-              {activeStep === 9 && `📋 ${t("step9.title")}`}
-              {activeStep === 10 && `📧 ${t("step11.title")}`}
+              {activeStep === 1 && `🛡️ ${t('step1.title')}`}
+              {activeStep === 2 && `📦 ${t('step2.title')}`}
+              {activeStep === 3 && `📚 ${t('step3.title')}`}
+              {activeStep === 4 && `🔐 ${t('step4.title')}`}
+              {activeStep === 5 && `🌍 ${t('step5.title')}`}
+              {activeStep === 6 && `🔒 ${t('step6.title')}`}
+              {activeStep === 7 && `📄 ${t('step7.title')}`}
+              {activeStep === 8 && `🔑 ${t('step8.title')}`}
+              {activeStep === 9 && `📋 ${t('step9.title')}`}
+              {activeStep === 10 && `📧 ${t('step11.title')}`}
             </h2>
             <p className="text-sm text-zinc-400">
-              {activeStep === 1 && t("descriptions.fullstackTypeSafety")}
-              {activeStep === 2 && t("descriptions.shareResources")}
-              {activeStep === 3 && t("descriptions.storybook")}
-              {activeStep === 4 && t("descriptions.typedEnv")}
-              {activeStep === 5 && t("descriptions.internationalisation")}
-              {activeStep === 6 && t("descriptions.apiProtection")}
-              {activeStep === 7 && t("descriptions.autoDoc")}
-              {activeStep === 8 && t("descriptions.authentication")}
-              {activeStep === 9 && t("descriptions.logging")}
-              {activeStep === 10 && t("descriptions.cleanEmails")}
+              {activeStep === 1 && t('descriptions.fullstackTypeSafety')}
+              {activeStep === 2 && t('descriptions.shareResources')}
+              {activeStep === 3 && t('descriptions.storybook')}
+              {activeStep === 4 && t('descriptions.typedEnv')}
+              {activeStep === 5 && t('descriptions.internationalisation')}
+              {activeStep === 6 && t('descriptions.apiProtection')}
+              {activeStep === 7 && t('descriptions.autoDoc')}
+              {activeStep === 8 && t('descriptions.authentication')}
+              {activeStep === 9 && t('descriptions.logging')}
+              {activeStep === 10 && t('descriptions.cleanEmails')}
             </p>
           </div>
 

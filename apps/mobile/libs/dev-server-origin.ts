@@ -87,8 +87,24 @@ export function getLanHost(): string {
   return cachedLanHost;
 }
 
+/**
+ * URL du serveur dev pour le WebView (live reload).
+ *
+ * En **`NODE_ENV === "production"`** (ex. `next build` + `cap copy`), retourne **`undefined`** :
+ * le WebView charge les fichiers **packagés** depuis `webDir` (`out/`), pas une IP LAN — sinon en prod
+ * l’app tente `http://192.168.x.x:3001` → *connection refused* hors réseau / serveur éteint.
+ *
+ * Forcer le mode dev même en prod : `CAPACITOR_DEV_SERVER=1`. Forcer les assets packagés : `CAP_USE_PACKAGED_WEB=1`.
+ */
 export function getCapacitorDevServerUrl(): string | undefined {
-  if (process.env["CAPACITOR_EMBED_DEV_SERVER"] === "0") return undefined;
+  const forceDevServer =
+    process.env["CAPACITOR_DEV_SERVER"] === "1" || process.env["CAP_DEV_SERVER"] === "1";
+  const forcePackaged = process.env["CAP_USE_PACKAGED_WEB"] === "1";
+
+  if (!forceDevServer && (process.env["NODE_ENV"] === "production" || forcePackaged)) {
+    return undefined;
+  }
+
   const host = getLanHost();
   if (!USE_ANDROID_EMULATOR) {
     return `http://${host}:${DEV_SERVER_PORT}`;

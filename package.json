@@ -18,6 +18,7 @@
     "dev:ui": "turbo run dev --filter=@repo/ui...",
     "dev:mobile:android": "cd apps/mobile && bun run android",
     "dev:mobile:ios": "cd apps/mobile && bun run ios",
+    "release:mobile:android": "cd apps/mobile && bun run release:android",
     "#--------------------------TESTING------------------------------#": "",
     "test": "turbo run test",
     "test:e2e": "turbo run test:e2e",
