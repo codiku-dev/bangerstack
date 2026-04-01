@@ -14,6 +14,11 @@
       "tagline": "Type-safe APIs, shared packages, auth & docs out of the box. Built for developer experience.",
       "stack": "Turbo · Nest · tRPC · Next · Capacitor · Bun"
     },
+    "versions": {
+      "playStore": "Play Store",
+      "packageJson": "package.json",
+      "playDetail": "{name} (build {code})"
+    },
     "selectFeaturePrompt": "Select a feature above to see details.",
     "templateSubtitle": "Turbo Nest Trpc Next - Boiler plate monorepo (Bun)",
     "templateSubtitleWords": "Turbo Nest  Next Trpc",

@@ -81,6 +81,17 @@ See Gradle **`android/app/build.gradle`** (`signingConfigs.release`) for how tho
 
 Useful scripts from **`apps/mobile`**: **`bun run build:android`** (signed AAB + copy to `app-release.aab`), **`bun run release:playstore`** (build + upload via fastlane, when configured).
 
+### Android versionCode / versionName (Play Store)
+
+Each Play upload needs a **new `versionCode`** (integer, strictly increasing). The repo uses **`android/version.properties`** (committed) plus an automatic bump:
+
+- **`bun run build:android`** and **`bun run release:playstore`** run **`scripts/bump-android-version.ts`** before **`bundleRelease`** (`VERSION_CODE` +1).
+- **`versionName`** (user-visible) follows **`ANDROID_VERSION_NAME`** if set, else the value in **`version.properties`**, else **`package.json`** `"version"` in this app.
+
+Manual bump only: **`bun run bump:android-version`**. Skip bump (e.g. rebuild same code): **`SKIP_ANDROID_VERSION_BUMP=1`**. CI can set **`ANDROID_VERSION_CODE`** / **`ANDROID_VERSION_NAME`** so Gradle ignores the file for that job.
+
+After a release, **commit** the updated **`version.properties`** so the team stays aligned. If you already published a build outside this flow, set **`VERSION_CODE`** in that file to the **last value used on Play** before the next bump.
+
 ## Lint and types
 
 ```bash

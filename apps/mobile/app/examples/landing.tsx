@@ -19,6 +19,13 @@ import { SafeArea } from '@/ui/safe-area';
 
 const CREATE_CMD = 'npx create-bangerstack@latest';
 
+const MOBILE_PKG_VERSION =
+  process.env["NEXT_PUBLIC_MOBILE_PACKAGE_VERSION"] ?? "—";
+const PLAY_VERSION_NAME =
+  process.env["NEXT_PUBLIC_PLAY_STORE_VERSION_NAME"] ?? "—";
+const PLAY_VERSION_CODE =
+  process.env["NEXT_PUBLIC_PLAY_STORE_VERSION_CODE"] ?? "—";
+
 function BangerStackLogo(p: { className?: string }) {
   return (
     <svg
@@ -92,14 +99,36 @@ export default function Landing() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_20%,rgba(99,102,241,0.25),transparent)] h-44" />
       <header className="relative overflow-hidden border-b border-white/10">
         <div className="relative max-w-5xl mx-auto px-4 pt-6 pb-12">
-          <div className="flex items-center gap-3 mb-6">
-            <BangerStackLogo className="h-9 w-9 shrink-0 rounded-lg shadow-lg shadow-violet-500/20" />
-            <span className="text-xl font-bold tracking-tight text-white">
-              BangerStack
-            </span>
-            <span className="text-xs font-medium text-violet-300/90 border border-violet-500/30 rounded-full px-2 py-0.5">
-              Mobile
-            </span>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4 mb-6">
+            <div className="flex items-center gap-3 min-w-0">
+              <BangerStackLogo className="h-9 w-9 shrink-0 rounded-lg shadow-lg shadow-violet-500/20" />
+              <span className="text-xl font-bold tracking-tight text-white">
+                BangerStack
+              </span>
+              <span className="text-xs font-medium text-violet-300/90 border border-violet-500/30 rounded-full px-2 py-0.5">
+                Mobile
+              </span>
+            </div>
+            <div
+              className="text-xs text-zinc-400 text-left sm:text-right space-y-1 shrink-0 font-mono tabular-nums"
+              aria-label={`${t('versions.playStore')}: ${PLAY_VERSION_NAME}, ${t('versions.packageJson')}: ${MOBILE_PKG_VERSION}`}
+            >
+              <div>
+                <span className="text-zinc-500">{t('versions.playStore')}</span>
+                <span className="mx-1.5 text-zinc-600">·</span>
+                <span className="text-zinc-200">
+                  {t('versions.playDetail', {
+                    name: PLAY_VERSION_NAME,
+                    code: PLAY_VERSION_CODE,
+                  })}
+                </span>
+              </div>
+              <div>
+                <span className="text-zinc-500">{t('versions.packageJson')}</span>
+                <span className="mx-1.5 text-zinc-600">·</span>
+                <span className="text-zinc-200">{MOBILE_PKG_VERSION}</span>
+              </div>
+            </div>
           </div>
           <p className="inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-3 py-1.5 text-xs font-medium text-violet-300 mb-6">
             {t('header.badge')}

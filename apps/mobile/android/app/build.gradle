@@ -8,6 +8,30 @@ if (keystorePropertiesFile.exists()) {
     keystorePropertiesFile.withInputStream { keystoreProperties.load(it) }
 }
 
+def versionPropsFile = rootProject.file("version.properties")
+def versionProps = new Properties()
+if (versionPropsFile.exists()) {
+    versionPropsFile.withInputStream { versionProps.load(it) }
+}
+def androidVersionCode = {
+    def fromEnv = System.getenv("ANDROID_VERSION_CODE")
+    if (fromEnv != null && !fromEnv.isBlank()) {
+        return fromEnv.trim().toInteger()
+    }
+    def fromProp = findProperty("ANDROID_VERSION_CODE")?.toString()?.trim()
+    if (fromProp != null && !fromProp.isEmpty()) {
+        return fromProp.toInteger()
+    }
+    return (versionProps.getProperty("VERSION_CODE", "1")).toInteger()
+}()
+def androidVersionName = {
+    def fromEnv = System.getenv("ANDROID_VERSION_NAME")
+    if (fromEnv != null && !fromEnv.isBlank()) return fromEnv.trim()
+    def fromProp = findProperty("ANDROID_VERSION_NAME")?.toString()?.trim()
+    if (fromProp != null && !fromProp.isEmpty()) return fromProp
+    return versionProps.getProperty("VERSION_NAME", "1.0")
+}()
+
 configurations.configureEach {
     exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk7'
     exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
@@ -20,8 +44,8 @@ android {
         applicationId "com.bangerstack.mobile"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 2
-        versionName "1.0.1"
+        versionCode androidVersionCode
+        versionName androidVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.

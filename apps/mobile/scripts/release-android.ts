@@ -170,6 +170,11 @@ async function main() {
       cwd: mobileDir,
     },
     {
+      name: "Bump Android version (versionCode)",
+      command: "bun run scripts/bump-android-version.ts",
+      cwd: mobileDir,
+    },
+    {
       name: "Build Android release AAB",
       command: "./gradlew bundleRelease",
       cwd: androidDir,
