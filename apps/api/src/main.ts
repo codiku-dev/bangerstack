@@ -29,7 +29,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     bodyParser: false,
     cors: {
-      // origin: [process.env.FRONTEND_URL as string, process.env.MOBILE_URL_WEB as string, process.env.MOBILE_URL_EMULATOR as string, "192.168.1.224", "http://192.168.1.224:3001"],
+      // origin: ["capacitor://localhost","http://localhost", process.env.FRONTEND_URL as string, process.env.MOBILE_URL_WEB as string, process.env.MOBILE_URL_EMULATOR as string, "192.168.1.224", "http://192.168.1.224:3001"],
       // credentials: true,
       origin: "*",
       // credentials: true,
