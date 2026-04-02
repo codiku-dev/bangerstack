@@ -1,20 +1,11 @@
-"use client";
+import { IntlProvider } from "@/providers/intl-provider";
+import type { ReactNode } from "react";
+import { ReactQueryProvider } from "./react-query-provider";
 
-import { ReactQueryProvider } from "@mobile/providers/react-query-provider";
-import { TrpcProvider } from "@mobile/providers/trpc-provider";
-import { IntlProvider } from "@mobile/providers/intl-provider";
-import { SafeArea } from "@/ui/safe-area";
-import { useState } from "react";
-
-export function Providers(p: { children: React.ReactNode }) {
-
+export function Providers(p: { children: ReactNode }) {
   return (
-    <TrpcProvider>
-      <IntlProvider>
-        <ReactQueryProvider>
-          {p.children}
-        </ReactQueryProvider>
-      </IntlProvider>
-    </TrpcProvider>
+    <IntlProvider>
+      <ReactQueryProvider>{p.children}</ReactQueryProvider>
+    </IntlProvider>
   );
 }

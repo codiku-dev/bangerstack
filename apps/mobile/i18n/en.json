@@ -12,12 +12,17 @@
       "badge": "DX-first",
       "headline": "Build fullstack quickly and efficiently",
       "tagline": "Type-safe APIs, shared packages, auth & docs out of the box. Built for developer experience.",
-      "stack": "Turbo · Nest · tRPC · Next · Capacitor · Bun"
+      "stack": "Turbo · Nest · tRPC · Next · Bun"
     },
-    "versions": {
-      "playStore": "Play Store",
-      "packageJson": "package.json",
-      "playDetail": "{name} (build {code})"
+    "mobile": {
+      "examplesTitle": "Examples (aligned with web)",
+      "typeSafety": "tRPC type safety",
+      "apiProtection": "API protection",
+      "authentication": "Better Auth",
+      "internationalisation": "Intl (en / fr)",
+      "apiUrl": "API base: {url}",
+      "toggleFr": "FR",
+      "toggleEn": "EN"
     },
     "selectFeaturePrompt": "Select a feature above to see details.",
     "templateSubtitle": "Turbo Nest Trpc Next - Boiler plate monorepo (Bun)",
@@ -40,7 +45,7 @@
       "shareResources": "Create a simple React component and share it between your apps.",
       "storybook": "Create your stories and develop your components in isolation.",
       "typedEnv": "Validated and typed environment variables at startup (with dotenvx encrypted secrets).",
-      "internationalisation": "Use next-intl to translate your application easily.",
+      "internationalisation": "Same JSON messages as web via IntlProvider (Expo-friendly).",
       "apiProtection": "AuthGuardRouter + @Public for public routes, protected routes require a session. Try both fetches below.",
       "autoDoc": "We use trpc-ui to expose your tRPC API. The documentation is generated automatically from your routers and Zod schemas.",
       "authentication": "Sign in, sign up and session management on the front-end with Better Auth.",
@@ -114,6 +119,9 @@
       "accountNotSignedIn": "Not signed in. Sign in above to view your account.",
       "authEventsTitle": "Authentication events",
       "resetPasswordTitle": "Reset password",
+      "passwordLabel": "Password",
+      "signInButton": "Sign in",
+      "signingIn": "Signing in…",
       "demoLabel": "Demo",
       "responseLabel": "Response",
       "emailLabel": "Email",

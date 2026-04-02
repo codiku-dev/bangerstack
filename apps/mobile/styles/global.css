@@ -1,0 +1,16 @@
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css";
+
+@import "nativewind/theme";
+
+@theme {
+  --color-app-bg: #0a0a0b;
+  --color-app-card: #18181b;
+  --color-app-border: #27272a;
+  --color-app-fg: #fafafa;
+  --color-app-muted: #a1a1aa;
+  --color-app-accent: #818cf8;
+  --color-app-destructive: #f87171;
+  --color-app-input: #27272a;
+}

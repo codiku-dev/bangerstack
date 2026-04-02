@@ -1,25 +1,23 @@
 {
-  "extends": "@repo/typescript-config/nextjs.json",
+  "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "jsx": "preserve",
-    "noPropertyAccessFromIndexSignature": true,
-    "baseUrl": ".",
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    "strict": true,
+    "jsx": "react-native",
     "paths": {
-      "@/*": ["./*"],
-      "@mobile/*": ["./*"]
+      "@/*": [
+        "./*"
+      ]
     }
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    "next-env.d.ts",
-    "next.config.js",
-    ".next/types/**/*.ts"
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts",
+    "nativewind-env.d.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "app-example"
+  ]
 }

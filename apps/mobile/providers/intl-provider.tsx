@@ -1,70 +1,73 @@
-"use client";
-
 import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useState,
   type ReactNode,
 } from "react";
-import { NextIntlClientProvider } from "next-intl";
 import en from "@/i18n/en.json";
 import fr from "@/i18n/fr.json";
 
-const messagesByLocale = { en, fr } as const;
-export type AppLocale = keyof typeof messagesByLocale;
+const messages = { en, fr } as const;
+export type AppLocale = keyof typeof messages;
+
+function getNested(obj: unknown, path: string): string {
+  const keys = path.split(".");
+  let cur: unknown = obj;
+  for (const k of keys) {
+    if (cur == null || typeof cur !== "object") return path;
+    cur = (cur as Record<string, unknown>)[k];
+  }
+  return typeof cur === "string" ? cur : path;
+}
 
 type IntlCtx = {
   locale: AppLocale;
   setLocale: (l: AppLocale) => void;
+  t: (key: string, values?: Record<string, string | number>) => string;
 };
 
-const Ctx = createContext<IntlCtx | null>(null);
+const IntlCtx = createContext<IntlCtx | null>(null);
 
-export function useAppLocale(): IntlCtx {
-  const v = useContext(Ctx);
-  if (!v) throw new Error("useAppLocale must be used under IntlProvider");
+export function IntlProvider(p: { children: ReactNode }) {
+  const [locale, setLocale] = useState<AppLocale>("en");
+
+  const t = useCallback(
+    (key: string, values?: Record<string, string | number>) => {
+      let s = getNested(messages[locale], key);
+      if (values) {
+        for (const [k, v] of Object.entries(values)) {
+          s = s.replaceAll(`{${k}}`, String(v));
+        }
+      }
+      return s;
+    },
+    [locale],
+  );
+
+  const value = useMemo(
+    () => ({ locale, setLocale, t }),
+    [locale, t],
+  );
+
+  return <IntlCtx.Provider value={value}>{p.children}</IntlCtx.Provider>;
+}
+
+export function useAppIntl(): IntlCtx {
+  const v = useContext(IntlCtx);
+  if (v == null) {
+    throw new Error("useAppIntl must be used within IntlProvider");
+  }
   return v;
 }
 
-export function IntlProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<AppLocale>("en");
-
-  useEffect(() => {
-    const raw = localStorage.getItem("locale");
-    if (raw === "fr" || raw === "en") setLocaleState(raw);
-  }, []);
-
-  const setLocale = useCallback((l: AppLocale) => {
-    setLocaleState(l);
-    localStorage.setItem("locale", l);
-    document.documentElement.lang = l;
-  }, []);
-
-  const messages = useMemo(() => messagesByLocale[locale], [locale]);
-
-  const value = useMemo(() => ({ locale, setLocale }), [locale, setLocale]);
-
-  return (
-    <Ctx.Provider value={value}>
-      <NextIntlClientProvider
-        locale={locale}
-        messages={messages}
-        onError={(err) => {
-          if (
-            err instanceof Error &&
-            "code" in err &&
-            (err as { code?: string }).code === "ENVIRONMENT_FALLBACK"
-          ) {
-            return;
-          }
-          console.error(err);
-        }}
-      >
-        {children}
-      </NextIntlClientProvider>
-    </Ctx.Provider>
+/** Même ergonomie que `useTranslations(ns)` côté web (next-intl). */
+export function useTranslations(namespace: string) {
+  const { t: rawT } = useAppIntl();
+  return useCallback(
+    (key: string, values?: Record<string, string | number>) =>
+      rawT(`${namespace}.${key}`, values),
+    [namespace, rawT],
   );
 }

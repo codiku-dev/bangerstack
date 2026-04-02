@@ -1,11 +1,12 @@
 import { createAuthClient } from "better-auth/react";
-import { adminClient } from "better-auth/client/plugins"
+import { adminClient } from "better-auth/client/plugins";
+import { getApiBaseUrl } from "@/libs/get-api-base-url";
+
+const base = getApiBaseUrl();
 
 const authClient = createAuthClient({
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL + '/api/auth',
-  plugins: [
-    adminClient(),
-  ],
+  baseURL: `${base}/api/auth`,
+  plugins: [adminClient()],
 });
 
 export const { useSession, signIn, signUp, signOut } = authClient;

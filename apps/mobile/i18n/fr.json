@@ -12,12 +12,17 @@
       "badge": "DX d'abord",
       "headline": "Le monorepo fullstack tout-en-un",
       "tagline": "Clean, DX-first, avec types, auth et doc inclus.",
-      "stack": "Turbo · Nest · tRPC · Next · Capacitor · Bun"
+      "stack": "Turbo · Nest · tRPC · Next · Bun"
     },
-    "versions": {
-      "playStore": "Play Store",
-      "packageJson": "package.json",
-      "playDetail": "{name} (build {code})"
+    "mobile": {
+      "examplesTitle": "Exemples (alignés avec le web)",
+      "typeSafety": "tRPC type safety",
+      "apiProtection": "Protection des API",
+      "authentication": "Better Auth",
+      "internationalisation": "Intl (en / fr)",
+      "apiUrl": "Base API : {url}",
+      "toggleFr": "FR",
+      "toggleEn": "EN"
     },
     "selectFeaturePrompt": "Choisis une catégorie ci-dessus pour voir les détails.",
     "templateSubtitle": "Template (Turbo Nest Trpc Next)",
@@ -40,7 +45,7 @@
       "shareResources": "Créez un composant React simple et partagez-le entre vos apps.",
       "storybook": "Créez vos stories et développez vos composants en isolation.",
       "typedEnv": "Variables d'environnement validées et typées au démarrage (avec secrets chiffrés via dotenvx).",
-      "internationalisation": "Utilisez next-intl pour traduire votre application facilement.",
+      "internationalisation": "Mêmes messages JSON que le web via IntlProvider (compatible Expo).",
       "apiProtection": "AuthGuardRouter + @Public pour les routes publiques, les routes protégées exigent une session. Testez les deux appels ci-dessous.",
       "autoDoc": "Nous utilisons trpc-ui pour exposer votre API tRPC. La documentation est générée automatiquement à partir de vos routers et schémas Zod.",
       "authentication": "Connexion, inscription et gestion de session côté front avec Better Auth.",
@@ -114,6 +119,9 @@
       "accountNotSignedIn": "Non connecté. Connectez-vous ci-dessus pour voir votre compte.",
       "authEventsTitle": "Événements d’authentification",
       "resetPasswordTitle": "Réinitialiser le mot de passe",
+      "passwordLabel": "Mot de passe",
+      "signInButton": "Se connecter",
+      "signingIn": "Connexion…",
       "demoLabel": "Démo",
       "responseLabel": "Réponse",
       "emailLabel": "Email",
