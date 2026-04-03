@@ -14,7 +14,23 @@
       "tagline": "Clean, DX-first, avec types, auth et doc inclus.",
       "stack": "Turbo · Nest · tRPC · Next · Bun"
     },
+    "versions": {
+      "app": "App",
+      "expoSdk": "Expo SDK"
+    },
     "mobile": {
+      "expoBadge": "Expo",
+      "copied": "Copié !",
+      "copyHint": "Copier la commande scaffold",
+      "categoriesTitle": "Explorer le stack",
+      "authIntro": "Client better-auth via @/libs/auth-client — même usage que sur le web.",
+      "intlIntro": "Les messages sont dans i18n/en.json et i18n/fr.json, via IntlProvider.",
+      "sessionHookLabel": "useSession",
+      "loggingHint": "Active des logs de requêtes structurés quand tu actives le logging sur le garde API.",
+      "loggingCodeSample": "AuthGuardRouter · logs: true",
+      "loggingTerminalSample": "[GET] /trpc/app.hello · 200 · 12ms",
+      "fullDemoHint": "Certaines étapes sont condensées sur mobile ; le web détaille davantage.",
+      "openExample": "Ouvrir l’exemple",
       "examplesTitle": "Exemples (alignés avec le web)",
       "typeSafety": "tRPC type safety",
       "apiProtection": "Protection des API",
@@ -55,6 +71,12 @@
     },
     "step1": {
       "title": "Fullstack type safety",
+      "intro": "Même AppRouter que le web — trpc depuis @/libs/trpc-client.",
+      "codeExample": "import { trpc } from '@/libs/trpc-client';\n\nconst { data } = trpc.app.hello.useQuery();",
+      "codeHintBackend": "Nest @Query + sortie Zod côté API ; les types remontent au client.",
+      "codeHintClient": "trpc.app.hello.useQuery() — inférence complète.",
+      "fetchCta": "Récupérer les données",
+      "clickToFetch": "Appuie sur le bouton pour appeler trpc.app.hello",
       "nestjsSide": "NestJS",
       "nextjsSide": "NextJS",
       "backendSide": "Back-end",
@@ -112,9 +134,17 @@
     },
     "step8": {
       "title": "Authentification avec Better Auth",
+      "namePlaceholder": "Nom",
+      "emailPlaceholder": "vous@exemple.com",
+      "nameLabel": "Nom",
       "signupTitle": "Inscription",
+      "signUpButton": "S’inscrire",
+      "signingUp": "Inscription…",
+      "signOutButton": "Se déconnecter",
+      "googleConfigHint": "Définis EXPO_PUBLIC_GOOGLE_AUTH_CALLBACK_URL dans .env pour activer Google (comme sur le web).",
       "signinTitle": "Connexion",
       "googleSigninTitle": "Connexion avec Google",
+      "googleBrand": "Google",
       "accountTitle": "Compte",
       "accountNotSignedIn": "Non connecté. Connectez-vous ci-dessus pour voir votre compte.",
       "authEventsTitle": "Événements d’authentification",
@@ -171,6 +201,6 @@
   },
   "I18nExample": {
     "title": "Bonjour le monde !",
-    "description": "Ce texte est traduit en utilisant next-intl."
+    "description": "Ce texte vient des mêmes fichiers JSON que le web (provider compatible Expo)."
   }
 }

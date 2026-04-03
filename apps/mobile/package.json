@@ -8,15 +8,16 @@
     }
   },
   "scripts": {
-    "dotenvx": "dotenvx",
-    "dev": "npx dotenvx run -f .env.local.development -- expo start",
-    "start": "npx dotenvx run -f .env.local.development -- expo start",
+    "install:here": "bun run ../../scripts/install-mobile-local.ts",
+    "dotenvx": "node ./node_modules/@dotenvx/dotenvx/src/cli/dotenvx.js",
+    "dev": "node ./node_modules/@dotenvx/dotenvx/src/cli/dotenvx.js run -f .env.local.development -- expo start",
+    "start": "node ./node_modules/@dotenvx/dotenvx/src/cli/dotenvx.js run -f .env.local.development -- expo start",
     "reset-project": "node ./scripts/reset-project.js",
-    "android": "npx dotenvx run -f .env.local.development -- expo start --android",
-    "ios": "npx dotenvx run -f .env.local.development -- expo start --ios",
-    "web": "npx dotenvx run -f .env.local.development -- expo start --web",
-    "lint": "npx dotenvx run -f .env.production -- expo lint",
-    "check-types": "tsc --noEmit",
+    "android": "node ./node_modules/@dotenvx/dotenvx/src/cli/dotenvx.js run -f .env.local.development -- expo start --android",
+    "ios": "node ./node_modules/@dotenvx/dotenvx/src/cli/dotenvx.js run -f .env.local.development -- expo start --ios",
+    "web": "node ./node_modules/@dotenvx/dotenvx/src/cli/dotenvx.js run -f .env.local.development -- expo start --web",
+    "lint": "node ./node_modules/@dotenvx/dotenvx/src/cli/dotenvx.js run -f .env.production -- expo lint",
+    "check-types": "node ./node_modules/typescript/lib/tsc.js --noEmit",
     "check-env:watch": "cd ../.. && bun run check-env:watch"
   },
   "dependencies": {
@@ -31,6 +32,7 @@
     "@trpc/server": "11.8.1",
     "better-auth": "^1.4.18",
     "expo": "~54.0.0",
+    "expo-clipboard": "~8.0.8",
     "expo-constants": "~18.0.13",
     "expo-font": "~14.0.11",
     "expo-haptics": "~15.0.8",

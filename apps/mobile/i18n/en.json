@@ -14,7 +14,23 @@
       "tagline": "Type-safe APIs, shared packages, auth & docs out of the box. Built for developer experience.",
       "stack": "Turbo · Nest · tRPC · Next · Bun"
     },
+    "versions": {
+      "app": "App",
+      "expoSdk": "Expo SDK"
+    },
     "mobile": {
+      "expoBadge": "Expo",
+      "copied": "Copied!",
+      "copyHint": "Copy scaffold command",
+      "categoriesTitle": "Explore the stack",
+      "authIntro": "better-auth client from @/libs/auth-client — same usage as on web.",
+      "intlIntro": "Messages live in i18n/en.json and i18n/fr.json, loaded via IntlProvider.",
+      "sessionHookLabel": "useSession",
+      "loggingHint": "Enable structured request logs when you turn logging on in the API guard.",
+      "loggingCodeSample": "AuthGuardRouter · logs: true",
+      "loggingTerminalSample": "[GET] /trpc/app.hello · 200 · 12ms",
+      "fullDemoHint": "Some steps are condensed on mobile; the web app includes longer walkthroughs.",
+      "openExample": "Open example",
       "examplesTitle": "Examples (aligned with web)",
       "typeSafety": "tRPC type safety",
       "apiProtection": "API protection",
@@ -55,6 +71,12 @@
     },
     "step1": {
       "title": "Fullstack type safety",
+      "intro": "Same AppRouter as web — trpc from @/libs/trpc-client.",
+      "codeExample": "import { trpc } from '@/libs/trpc-client';\n\nconst { data } = trpc.app.hello.useQuery();",
+      "codeHintBackend": "Nest @Query + Zod output on the API; types flow to the client.",
+      "codeHintClient": "trpc.app.hello.useQuery() — full inference.",
+      "fetchCta": "Fetch data",
+      "clickToFetch": "Tap the button to call trpc.app.hello",
       "nestjsSide": "NestJS side",
       "nextjsSide": "NextJS side",
       "backendSide": "Back-end side",
@@ -112,9 +134,17 @@
     },
     "step8": {
       "title": "Authentication with Better Auth",
+      "namePlaceholder": "Name",
+      "emailPlaceholder": "you@example.com",
+      "nameLabel": "Name",
       "signupTitle": "Sign up",
+      "signUpButton": "Sign up",
+      "signingUp": "Signing up…",
+      "signOutButton": "Sign out",
+      "googleConfigHint": "Set EXPO_PUBLIC_GOOGLE_AUTH_CALLBACK_URL in .env to enable Google sign-in (same as web).",
       "signinTitle": "Sign in",
       "googleSigninTitle": "Sign in with Google",
+      "googleBrand": "Google",
       "accountTitle": "Account",
       "accountNotSignedIn": "Not signed in. Sign in above to view your account.",
       "authEventsTitle": "Authentication events",
@@ -171,6 +201,6 @@
   },
   "I18nExample": {
     "title": "Hello world!",
-    "description": "This text is translated using next-intl."
+    "description": "This text is translated from the same JSON files as the web app (Expo-friendly provider)."
   }
 }
