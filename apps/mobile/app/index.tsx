@@ -175,7 +175,9 @@ export default function HomeScreen() {
                 key={tech}
                 className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1"
               >
-                <Text className="text-xs font-medium text-zinc-300">{tech}</Text>
+                <Text className="text-xs font-medium text-zinc-300">
+                  {tech}
+                </Text>
               </View>
             ))}
           </View>
@@ -224,9 +226,6 @@ export default function HomeScreen() {
 
           <View className="rounded-xl border border-white/10 bg-white/5 p-4">
             <LandingFeaturePanel tab={active} />
-            <Text className="mt-6 font-mono text-[10px] text-zinc-500">
-              {tm('apiUrl', { url: getApiBaseUrl() })}
-            </Text>
           </View>
         </View>
       </ScrollView>

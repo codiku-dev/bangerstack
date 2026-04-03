@@ -36,7 +36,6 @@
       "apiProtection": "API protection",
       "authentication": "Better Auth",
       "internationalisation": "Intl (en / fr)",
-      "apiUrl": "API base: {url}",
       "toggleFr": "FR",
       "toggleEn": "EN"
     },

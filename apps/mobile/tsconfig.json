@@ -4,9 +4,8 @@
     "strict": true,
     "jsx": "react-native",
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"],
+      "@repo/trpc/router": ["../../packages/trpc/src/server.ts"]
     }
   },
   "include": [

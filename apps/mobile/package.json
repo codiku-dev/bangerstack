@@ -8,6 +8,7 @@
     }
   },
   "scripts": {
+    "sync-node-modules": "bun run ../../scripts/sync-mobile-node-modules.ts --no-install",
     "install:here": "bun run ../../scripts/install-mobile-local.ts",
     "dotenvx": "node ./node_modules/@dotenvx/dotenvx/src/cli/dotenvx.js",
     "dev": "node ./node_modules/@dotenvx/dotenvx/src/cli/dotenvx.js run -f .env.local.development -- expo start",
@@ -21,6 +22,7 @@
     "check-env:watch": "cd ../.. && bun run check-env:watch"
   },
   "dependencies": {
+    "@repo/trpc": "*",
     "@expo/vector-icons": "^15.0.3",
     "@hookform/resolvers": "^5.0.0",
     "@react-navigation/bottom-tabs": "^7.4.0",
@@ -30,7 +32,7 @@
     "@trpc/client": "11.8.1",
     "@trpc/react-query": "11.8.1",
     "@trpc/server": "11.8.1",
-    "better-auth": "^1.4.18",
+    "better-auth": "1.4.18",
     "expo": "~54.0.0",
     "expo-clipboard": "~8.0.8",
     "expo-constants": "~18.0.13",
@@ -59,6 +61,7 @@
     "zod": "3.25.5"
   },
   "devDependencies": {
+    "reactotron-react-native": "^5.1.18",
     "@dotenvx/dotenvx": "^1.52.0",
     "@tailwindcss/postcss": "^4.2.2",
     "@types/react": "~19.1.10",
