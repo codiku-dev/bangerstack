@@ -8,8 +8,6 @@
     }
   },
   "scripts": {
-    "sync-node-modules": "bun run ../../scripts/sync-mobile-node-modules.ts --no-install",
-    "install:here": "bun run ../../scripts/install-mobile-local.ts",
     "dotenvx": "node ./node_modules/@dotenvx/dotenvx/src/cli/dotenvx.js",
     "dev": "node ./node_modules/@dotenvx/dotenvx/src/cli/dotenvx.js run -f .env.local.development -- expo start",
     "start": "node ./node_modules/@dotenvx/dotenvx/src/cli/dotenvx.js run -f .env.local.development -- expo start",

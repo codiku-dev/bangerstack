@@ -4,9 +4,10 @@ Même stack **data** que `apps/web` : **tRPC** (`@repo/trpc`), **Better Auth** (
 
 ## Config
 
-1. Depuis la racine du monorepo : `bun install`
+1. Depuis la racine du monorepo : `bun install` (dépendances isolées par workspace ; pas d’étape de sync manuelle).
 2. Copier `apps/mobile/.env.example` → `apps/mobile/.env` et définir **`EXPO_PUBLIC_API_BASE_URL`** (voir commentaires dans l’example). Démarre **`apps/api`** pour les exemples tRPC / auth.
 3. `bun run dev:mobile+api` à la racine, ou dans ce dossier : `bun run dev`
+4. Ajouter un paquet npm : dans `apps/mobile`, exécuter `bun add <paquet>` (mise à jour du lockfile à la racine).
 
 ## Écrans d’exemple
 
@@ -21,7 +22,7 @@ Même stack **data** que `apps/web` : **tRPC** (`@repo/trpc`), **Better Auth** (
 ## Détails techniques
 
 - **`libs/trpc-client.ts`** / **`libs/auth-client.ts`** : URLs dérivées de `getApiBaseUrl()` (`EXPO_PUBLIC_API_BASE_URL` ou `http://127.0.0.1:3090`).
-- **`metro.config.js`** : `watchFolders` vers la racine du monorepo pour résoudre `workspace:*`.
+- **`metro.config.js`** : `watchFolders` + `nodeModulesPaths` (app + racine) pour le monorepo et les paquets `workspace:*`.
 - **`env-type.ts`** : schéma Zod pour `check-env` (même script que les autres apps).
 
 ---
