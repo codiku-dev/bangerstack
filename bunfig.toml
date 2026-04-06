@@ -1,4 +1,2 @@
-# Workspaces Bun : les paquets sont toujours hoistés vers la racine — c’est normal.
-# Pour ajouter une lib **au mobile** + remplir apps/mobile/node_modules : `bun run mobile:add …` (racine) ou `bun run add …` dans apps/mobile.
 [install]
 linker = "isolated"
