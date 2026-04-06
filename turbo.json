@@ -110,7 +110,7 @@
     },
     "build:styles": {
       "outputs": [
-        "dist/index.css"
+        "dist/globals.css"
       ]
     },
     "build:components": {

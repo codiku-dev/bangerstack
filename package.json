@@ -7,7 +7,6 @@
   "license": "UNLICENSED",
   "scripts": {
     "#--------------------------GENERAL------------------------------#": "",
-    "postinstall": "bun run scripts/sync-mobile-node-modules.ts --no-install",
     "build": "turbo run build",
     "#--------------------------DEV------------------------------#": "",
     "dev:web+api": " bun run db:start && bun db:update && turbo run dev --filter=api... --filter=web...",
@@ -20,6 +19,7 @@
     "dev:mobile-pwa:android": "cd apps/mobile-pwa && bun run android",
     "dev:mobile-pwa:ios": "cd apps/mobile-pwa && bun run ios",
     "dev:api": "turbo run dev --filter=api...",
+    "build:ui": "turbo run build --filter=@repo/ui...",
     "dev:ui": "turbo run dev --filter=@repo/ui...",
     "release:mobile-pwa:android": "cd apps/mobile-pwa && bun run release:android",
     "#--------------------------TESTING------------------------------#": "",
@@ -48,11 +48,7 @@
     "check-env": "bun run scripts/check-env-all-apps.ts",
     "check-env:watch": "bun run scripts/check-env-all-apps.ts -- --watch",
     "encrypt-env": "npx dotenvx encrypt -f ./apps/*/.env.production",
-    "decrypt-env": "npx dotenvx decrypt -f ./apps/*/.env.production",
-    "#---------------------------MOBILE (Expo) ------------------------------#": "",
-    "mobile:add": "bun run scripts/mobile-add.ts",
-    "mobile:install:here": "bun run scripts/install-mobile-local.ts",
-    "mobile:sync-node-modules": "bun run scripts/sync-mobile-node-modules.ts"
+    "decrypt-env": "npx dotenvx decrypt -f ./apps/*/.env.production"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
@@ -64,9 +60,7 @@
   },
   "overrides": {
     "@types/react": "19.2.9",
-    "@types/react-dom": "19.2.3",
-    "@better-auth/core": "1.4.18",
-    "@better-auth/telemetry": "1.4.18"
+    "@types/react-dom": "19.2.3"
   },
   "packageManager": "bun@1.2.15",
   "workspaces": [
